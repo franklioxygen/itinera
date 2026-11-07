@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>夏威夷14天自然风光行程：欧胡岛、茂宜岛、大岛</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #EEF1EE;
+  --surface: #F8FAF8;
+  --ink: #1D272B;
+  --ink-soft: #56636A;
+  --line: #CBD3CF;
+  --oahu: #0E6B74;
+  --maui: #946010;
+  --big: #B3263A;
+  --on-color: #FFFFFF;
+  --serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --latin: "Newsreader", "Georgia", "Times New Roman", serif;
+  --sans: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121A1D; --surface: #1A2427; --ink: #E4EAE7; --ink-soft: #A3B0AC; --line: #2E3B3F;
+    --oahu: #5DBAC3; --maui: #E0A94F; --big: #F2687C; --on-color: #121A1D;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121A1D; --surface: #1A2427; --ink: #E4EAE7; --ink-soft: #A3B0AC; --line: #2E3B3F;
+  --oahu: #5DBAC3; --maui: #E0A94F; --big: #F2687C; --on-color: #121A1D;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.75; -webkit-text-size-adjust: 100%; }
+img { max-width: 100%; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--oahu); outline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+header.hero { padding: 3.5rem 0 1.5rem; }
+.hero h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(2.1rem, 7vw, 3.4rem); line-height: 1.15; letter-spacing: 0.01em; margin: 0 0 0.9rem; }
+.hero h1 span { display: block; }
+.hero h1 .sub { font-weight: 600; font-size: 0.5em; color: var(--ink-soft); margin-top: 0.4rem; letter-spacing: 0.04em; }
+.hero p.lead { margin: 0; max-width: 36em; }
+.route { margin: 1.1rem 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+.strip-wrap { margin: 1.75rem 0 0.5rem; }
+.strip { display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 3px; }
+.strip a { display: flex; align-items: center; justify-content: center; height: 44px; text-decoration: none; font-family: var(--serif); font-weight: 600; font-size: 0.9rem; color: var(--on-color); border-radius: 2px; }
+.strip a.o { background: var(--oahu); }
+.strip a.m { background: var(--maui); }
+.strip a.b { background: var(--big); }
+.strip a.fly { box-shadow: inset 0 -5px 0 rgba(255,255,255,0.45); }
+.strip-legend { display: grid; grid-template-columns: 2fr 5fr 7fr 1fr; gap: 3px; margin-top: 0.4rem; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.35; }
+.strip-legend span { border-top: 2px solid; padding-top: 0.3rem; }
+.strip-legend .o { border-color: var(--oahu); }
+.strip-legend .m { border-color: var(--maui); }
+.strip-legend .b { border-color: var(--big); }
+.strip-note { font-size: 0.82rem; color: var(--ink-soft); margin: 0.5rem 0 0; }
+
+section { padding: 2.25rem 0 0.5rem; }
+h2 { font-family: var(--serif); font-weight: 900; font-size: 1.55rem; line-height: 1.3; margin: 0 0 1rem; }
+h3 { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; line-height: 1.4; margin: 0; }
+
+.alerts { background: var(--surface); border-left: 5px solid var(--big); padding: 1.25rem 1.25rem 0.5rem; margin-top: 2rem; }
+.alerts h2 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+.alerts .asof { color: var(--ink-soft); font-size: 0.88rem; margin: 0 0 0.75rem; }
+.alerts dl { margin: 0; }
+.alerts dt { font-weight: 700; margin-top: 0.6rem; }
+.alerts dd { margin: 0.1rem 0 0.8rem; }
+
+.island { padding-top: 3rem; }
+.island-head { border-top: 6px solid var(--c); padding-top: 1rem; margin-bottom: 0.5rem; }
+.island-head h2 { margin: 0; color: var(--c); font-size: clamp(1.7rem, 5vw, 2.2rem); }
+.island-head h2 .latin { font-family: var(--latin); font-style: italic; font-weight: 500; font-size: 0.62em; color: var(--ink-soft); margin-left: 0.4rem; }
+.island-head p { margin: 0.35rem 0 0; color: var(--ink-soft); }
+.island.o { --c: var(--oahu); }
+.island.m { --c: var(--maui); }
+.island.b { --c: var(--big); }
+
+.day { display: grid; grid-template-columns: 3.4rem 1fr; gap: 0 1rem; padding: 1.5rem 0 0.75rem; border-bottom: 1px solid var(--line); scroll-margin-top: 1rem; }
+.day:last-child { border-bottom: 0; }
+.day .num { font-family: var(--serif); font-weight: 900; font-size: 2.4rem; line-height: 1; color: var(--c); text-align: right; padding-top: 0.1rem; }
+.day .num .date { display: block; margin-top: 0.4rem; font-family: var(--sans); font-weight: 600; font-size: 0.72rem; line-height: 1.35; letter-spacing: 0.02em; color: var(--ink-soft); }
+.toc .t .date { font-weight: 600; color: var(--c); margin-right: 0.6em; font-variant-numeric: tabular-nums; }
+.day .body { min-width: 0; }
+.move { margin: 0.35rem 0 0.5rem; color: var(--ink-soft); font-size: 0.93rem; }
+.stops { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+.stop { padding: 0.55rem 0 0.55rem 0.9rem; border-left: 2px solid var(--line); margin-bottom: 0.25rem; }
+.stop .zh { font-weight: 700; }
+.stop .en { display: block; font-family: var(--latin); font-style: italic; font-size: 1.02rem; color: var(--ink-soft); line-height: 1.35; }
+.stop p { margin: 0.2rem 0 0; }
+.stop p.shoot { color: var(--ink-soft); font-size: 0.93rem; }
+.stop p.shoot::before { content: "拍摄："; color: var(--c); font-weight: 700; }
+.stop p.wild { font-size: 0.93rem; }
+.stop p.wild::before { content: "动物："; color: var(--c); font-weight: 700; }
+.tag.animal { background: var(--c); color: var(--on-color); }
+.stop .stay { color: var(--ink-soft); font-size: 0.88rem; margin-left: 0.5rem; }
+.day-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.8rem; }
+.totals { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; }
+.total { font-size: 0.8rem; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 3px; padding: 0 0.45rem; line-height: 1.7; }
+.total .mode { font-weight: 700; color: var(--c); margin-right: 0.3rem; }
+.toc { padding-top: 2rem; }
+.toc h2 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+.toc ol { list-style: none; margin: 0.75rem 0 0; padding: 0; }
+.toc li { display: grid; grid-template-columns: 2.6rem 1fr; gap: 0 0.9rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+.toc li.o { --c: var(--oahu); }
+.toc li.m { --c: var(--maui); }
+.toc li.b { --c: var(--big); }
+.toc .d { font-family: var(--serif); font-weight: 900; font-size: 1.3rem; line-height: 1.3; color: var(--c); text-align: right; text-decoration: none; }
+.toc .c { min-width: 0; }
+.toc .t { display: block; font-weight: 700; color: inherit; text-decoration: none; }
+.toc .s { display: block; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.65; }
+.toc .s b { font-weight: 600; color: var(--ink); }
+.toc .s i { font-family: var(--latin); font-style: italic; font-size: 1.02em; }
+.stop .en a, .toc .s a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
+@media (max-width: 520px) { .toc li { grid-template-columns: 1.9rem 1fr; gap: 0 0.6rem; } .toc .d { font-size: 1.05rem; } }
+.leg { padding: 0.15rem 0 0.15rem 0.9rem; margin: 0 0 0.25rem; border-left: 2px dashed var(--line); font-size: 0.86rem; color: var(--ink-soft); line-height: 1.55; }
+.leg .mode { font-weight: 700; color: var(--c); margin-right: 0.4rem; }
+.wild-table td:first-child { white-space: nowrap; }
+.wild-table { --c: var(--ink); }
+.tag { display: inline-block; font-size: 0.75rem; font-weight: 700; line-height: 1.4; padding: 0 0.4rem; margin-left: 0.4rem; border: 1.5px solid var(--c); color: var(--c); border-radius: 3px; vertical-align: 0.1em; white-space: nowrap; }
+.tip { margin: 0.6rem 0 0.4rem; font-size: 0.93rem; color: var(--ink-soft); }
+.tip strong { color: var(--ink); }
+.branch h4 { margin: 0.8rem 0 0.2rem; font-size: 0.98rem; }
+.branch p { margin: 0 0 0.3rem; }
+
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 0.93rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--line); }
+th { font-weight: 700; color: var(--ink-soft); font-size: 0.85rem; }
+td .en { display: block; font-family: var(--latin); font-style: italic; color: var(--ink-soft); }
+
+.plain p { margin: 0 0 0.9rem; }
+.plain h3 { margin: 1.4rem 0 0.35rem; }
+
+footer { padding: 2.5rem 0 3rem; color: var(--ink-soft); font-size: 0.85rem; border-top: 1px solid var(--line); margin-top: 2.5rem; }
+
+@media (max-width: 520px) {
+  header.hero { padding-top: 2.25rem; }
+  .strip a { height: 38px; font-size: 0.78rem; }
+  .day { grid-template-columns: 2.4rem 1fr; gap: 0 0.7rem; }
+  .day .num { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1><span>夏威夷14天</span><span class="sub">自然风光和拍照为主</span></h1>
+  <p class="lead">第一次去，10月17日从亚特兰大出发，31日从檀香山回。欧胡岛只住2晚，把时间留给茂宜岛和大岛：茂宜岛住5晚，其中一晚住在哈纳，方便清晨拍黑沙滩；大岛住6晚，留一天等基拉韦厄喷发。</p>
+  <p class="route">亚特兰大飞檀香山，落地先去珍珠港，欧胡岛住2晚；飞茂宜岛，凯希2晚、哈纳1晚、卡阿纳帕利2晚；飞大岛希洛，火山村3晚、卡哈卢乌（科纳南边）3晚；第14天傍晚从科纳飞檀香山住一晚；10月31日上午去帕里观景台，晚上经凤凰城转机回亚特兰大。</p>
+
+  <div class="strip-wrap">
+    <nav class="strip" aria-label="按天跳转">
+      <a class="o fly" href="#d1" aria-label="第1天，10/17 周六" title="第1天，10/17 周六">1</a>
+      <a class="o" href="#d2" aria-label="第2天，10/18 周日" title="第2天，10/18 周日">2</a>
+      <a class="m fly" href="#d3" aria-label="第3天，10/19 周一" title="第3天，10/19 周一">3</a>
+      <a class="m" href="#d4" aria-label="第4天，10/20 周二" title="第4天，10/20 周二">4</a>
+      <a class="m" href="#d5" aria-label="第5天，10/21 周三" title="第5天，10/21 周三">5</a>
+      <a class="m" href="#d6" aria-label="第6天，10/22 周四" title="第6天，10/22 周四">6</a>
+      <a class="m" href="#d7" aria-label="第7天，10/23 周五" title="第7天，10/23 周五">7</a>
+      <a class="b fly" href="#d8" aria-label="第8天，10/24 周六" title="第8天，10/24 周六">8</a>
+      <a class="b" href="#d9" aria-label="第9天，10/25 周日" title="第9天，10/25 周日">9</a>
+      <a class="b" href="#d10" aria-label="第10天，10/26 周一" title="第10天，10/26 周一">10</a>
+      <a class="b" href="#d11" aria-label="第11天，10/27 周二" title="第11天，10/27 周二">11</a>
+      <a class="b" href="#d12" aria-label="第12天，10/28 周三" title="第12天，10/28 周三">12</a>
+      <a class="b" href="#d13" aria-label="第13天，10/29 周四" title="第13天，10/29 周四">13</a>
+      <a class="b fly" href="#d14" aria-label="第14天，10/30 周五" title="第14天，10/30 周五">14</a>
+      <a class="o fly" href="#d15" aria-label="回程日，10/31 周六" title="回程日，10/31 周六">回</a>
+    </nav>
+    <div class="strip-legend" aria-hidden="true">
+      <span class="o">欧胡岛</span>
+      <span class="m">茂宜岛</span>
+      <span class="b">大岛</span>
+      <span class="o">回程</span>
+    </div>
+    <p class="strip-note">点数字跳到当天。底部带白线的是有飞行的日子。景点旁边实心的“动物”标签表示那里能拍到野生动物，汇总见后面的“野生动物”。</p>
+    <p class="strip-note">每天标题旁边是当天开车和徒步的总时间：开车按正常路况估算；徒步只算实际走路的时间，不含浮潜和拍照停留。景点名称后面是建议停留时间，包含步行和拍摄。景点之间的虚线标了路程和时间，是按正常路况估算的，不含停留。哈纳公路、北岸和科纳一带经常比这慢，出发前用导航核实。</p>
+  </div>
+</header>
+
+<section class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">目录</h2>
+  <p class="strip-note">点天数或标题跳到当天；点英文名在谷歌地图里打开这个地点。</p>
+  <ol>
+      <li class="o"><a class="d" href="#d1">1</a><div class="c"><a class="t" href="#d1"><span class="date">10/17 周六</span>抵达，珍珠港和日落</a><span class="s"><b>珍珠港：亚利桑那号纪念馆</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Pearl%20Harbor%20National%20Memorial%20Honolulu%20HI" target="_blank" rel="noopener">Pearl Harbor National Memorial, USS Arizona Memorial</a></i>、<b>魔术岛</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Magic%20Island%20Ala%20Moana%20Regional%20Park%20Honolulu%20HI" target="_blank" rel="noopener">Magic Island, Ala Moana Regional Park</a></i>、<b>晚饭：Totoya 海鲜盖饭</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Totoya%20Ala%20Moana%2C%20436%20Piikoi%20St%2C%20Honolulu%2C%20HI" target="_blank" rel="noopener">Totoya とと家 Ala Moana</a></i></span></div></li>
+      <li class="o"><a class="d" href="#d2">2</a><div class="c"><a class="t" href="#d2"><span class="date">10/18 周日</span>东岸日出到北岸日落</a><span class="s"><b>拉尼凯碉堡步道</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Lanikai%20Pillbox%20Hike%20Oahu%20HI" target="_blank" rel="noopener">Lanikai Pillbox Hike (Kaʻiwa Ridge Trail)</a></i>、<b>马卡普乌角灯塔步道</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Makapu%CA%BBu%20Point%20Lighthouse%20Trail%20Oahu%20HI" target="_blank" rel="noopener">Makapuʻu Point Lighthouse Trail</a></i>、<b>哈罗纳喷水孔和拉奈观景点</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=H%C4%81lona%20Blowhole%20Lookout%20Oahu%20HI" target="_blank" rel="noopener">Hālona Blowhole Lookout &amp; Lānaʻi Lookout</a></i>、<b>古阿洛阿区域公园</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Kualoa%20Regional%20Park%20Oahu%20HI" target="_blank" rel="noopener">Kualoa Regional Park</a></i>、<b>拉尼亚凯亚海滩</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Laniakea%20Beach%20Oahu%20HI" target="_blank" rel="noopener">Laniakea Beach</a></i>、<b>威美亚湾和鲨鱼湾</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Waimea%20Bay%20Oahu%20HI" target="_blank" rel="noopener">Waimea Bay &amp; Shark's Cove</a></i>、<b>日落海滩</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Sunset%20Beach%20Oahu%20HI" target="_blank" rel="noopener">Sunset Beach</a></i></span></div></li>
+      <li class="m"><a class="d" href="#d3">3</a><div class="c"><a class="t" href="#d3"><span class="date">10/19 周一</span>钻石头山日出，飞茂宜岛</a><span class="s"><b>钻石头山</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Diamond%20Head%20State%20Monument%20Oahu%20HI" target="_blank" rel="noopener">Diamond Head State Monument (Lēʻahi)</a></i>、<b>伊奥山谷州立纪念地</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=%CA%BB%C4%AAao%20Valley%20State%20Monument%20Maui%20HI" target="_blank" rel="noopener">ʻĪao Valley State Monument</a></i>、<b>卡马奥莱一号海滩</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Kamaole%20Beach%20Park%20I%20Kihei%20HI" target="_blank" rel="noopener">Kamaʻole Beach Park I</a></i></span></div></li>
+      <li class="m"><a class="d" href="#d4">4</a><div class="c"><a class="t" href="#d4"><span class="date">10/20 周二</span>哈雷阿卡拉：火山口徒步</a><span class="s"><b>哈雷阿卡拉国家公园（山顶区）</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Haleakal%C4%81%20National%20Park%20Maui%20HI" target="_blank" rel="noopener">Haleakalā National Park, Summit District</a></i>、<b>滑沙步道</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Keonehe%27ehe%27e%20Sliding%20Sands%20Trailhead%20Haleakala%20HI" target="_blank" rel="noopener">Sliding Sands Trail (Keoneheʻeheʻe)</a></i>、<b>卡拉哈库观景点和莱莱伊维观景点</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Kalahaku%20Overlook%20Maui%20HI" target="_blank" rel="noopener">Kalahaku Overlook &amp; Leleiwi Overlook</a></i></span></div></li>
+      <li class="m"><a class="d" href="#d5">5</a><div class="c"><a class="t" href="#d5"><span class="date">10/21 周三</span>哈纳公路，住哈纳</a><span class="s"><b>霍奥基帕观景台（可选）</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Hookipa%20Lookout%20Maui%20HI" target="_blank" rel="noopener">Hoʻokipa Lookout</a></i>、<b>双瀑布</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Twin%20Falls%20Maui%20HI" target="_blank" rel="noopener">Twin Falls</a></i>、<b>伊甸园植物园</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Garden%20of%20Eden%20Arboretum%20Maui%20HI" target="_blank" rel="noopener">Garden of Eden Arboretum</a></i>、<b>凯阿纳埃半岛</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Ke%CA%BBanae%20Peninsula%20Maui%20HI" target="_blank" rel="noopener">Keʻanae Peninsula</a></i>、<b>瓦伊卡尼上瀑布（三熊瀑布）</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Upper%20Waikani%20Falls%20Maui%20HI" target="_blank" rel="noopener">Upper Waikani Falls (Three Bears Falls)</a></i>、<b>普阿卡阿州立路边公园</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Pua%CA%BBa%20Ka%CA%BBa%20State%20Wayside%20Maui%20HI" target="_blank" rel="noopener">Puaʻa Kaʻa State Wayside</a></i>、<b>哈纳熔岩管</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=H%C4%81na%20Lava%20Tube%20Maui%20HI" target="_blank" rel="noopener">Hāna Lava Tube (Kaʻeleku Cave)</a></i>、<b>哈莫阿海滩</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Hamoa%20Beach%20Maui%20HI" target="_blank" rel="noopener">Hamoa Beach</a></i></span></div></li>
+      <li class="m"><a class="d" href="#d6">6</a><div class="c"><a class="t" href="#d6"><span class="date">10/22 周四</span>哈纳清晨，竹林瀑布，去西毛伊</a><span class="s"><b>科基海滩和阿劳岛</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Koki%20Beach%20Maui%20HI" target="_blank" rel="noopener">Koki Beach &amp; ʻĀlau Island</a></i>、<b>瓦伊阿纳帕纳帕州立公园</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Wai%CA%BB%C4%81napanapa%20State%20Park%20Maui%20HI" target="_blank" rel="noopener">Waiʻānapanapa State Park</a></i>、<b>怀卢阿瀑布</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Wailua%20Falls%20Maui%20HI" target="_blank" rel="noopener">Wailua Falls (Hāna)</a></i>、<b>皮皮瓦伊步道（基帕胡卢区）</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=P%C4%ABp%C4%ABwai%20Trail%20Maui%20HI" target="_blank" rel="noopener">Pīpīwai Trail, Kīpahulu District</a></i></span></div></li>
+      <li class="m"><a class="d" href="#d7">7</a><div class="c"><a class="t" href="#d7"><span class="date">10/23 周五</span>摩洛基尼浮潜和西毛伊海岸</a><span class="s"><b>摩洛基尼火山口</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Maalaea%20Harbor%20Maui%20HI" target="_blank" rel="noopener">Molokini Crater</a></i>、<b>霍诺卢阿湾</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Honolua%20Bay%20Maui%20HI" target="_blank" rel="noopener">Honolua Bay</a></i>、<b>卡帕卢阿海岸步道</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Kapalua%20Coastal%20Trail%20Maui%20HI" target="_blank" rel="noopener">Kapalua Coastal Trail</a></i>、<b>龙牙岩</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Dragon%27s%20Teeth%20Maui%20HI" target="_blank" rel="noopener">Dragon's Teeth (Makaluapuna Point)</a></i></span></div></li>
+      <li class="b"><a class="d" href="#d8">8</a><div class="c"><a class="t" href="#d8"><span class="date">10/24 周六</span>飞希洛，第一眼看火山</a><span class="s"><b>彩虹瀑布</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Rainbow%20Falls%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Rainbow Falls (Waiānuenue)</a></i>、<b>沸腾池</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Boiling%20Pots%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Boiling Pots (Peʻepeʻe Falls)</a></i>、<b>基拉韦厄观景点</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=K%C4%ABlauea%20Overlook%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kīlauea Overlook</a></i></span></div></li>
+      <li class="b"><a class="d" href="#d9">9</a><div class="c"><a class="t" href="#d9"><span class="date">10/25 周日</span>夏威夷火山国家公园</a><span class="s"><b>乌埃卡胡纳观景台</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=U%C4%93kahuna%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Uēkahuna</a></i>、<b>基拉韦厄伊基步道</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=K%C4%ABlauea%20Iki%20Trail%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kīlauea Iki Trail</a></i>、<b>纳胡库熔岩管</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Thurston%20Lava%20Tube%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Thurston Lava Tube (Nāhuku)</a></i>、<b>毁灭步道</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Devastation%20Trail%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Devastation Trail</a></i>、<b>蒸汽口和硫磺岸</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Steam%20Vents%20Wahinekapu%20Hawaii%20Volcanoes%20National%20Park%20HI" target="_blank" rel="noopener">Steam Vents (Wahinekapu) &amp; Sulphur Banks (Haʻakulamanu)</a></i>、<b>火山口链路</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Chain%20of%20Craters%20Road%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Chain of Craters Road</a></i></span></div></li>
+      <li class="b"><a class="d" href="#d10">10</a><div class="c"><a class="t" href="#d10"><span class="date">10/26 周一</span>希洛美食和普纳黑沙滩</a><span class="s"><b>彩虹瀑布</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Rainbow%20Falls%20Hilo%20HI" target="_blank" rel="noopener">Rainbow Falls (Waiānuenue)</a></i>、<b>希洛农夫市场</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Hilo%20Farmers%20Market%20Hilo%20HI" target="_blank" rel="noopener">Hilo Farmers Market</a></i>、<b>莉莉乌欧卡拉尼花园</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Liliuokalani%20Gardens%20Hilo%20HI" target="_blank" rel="noopener">Liliʻuokalani Gardens</a></i>、<b>Suisan 鱼市</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Suisan%20Fish%20Market%2093%20Lihiwai%20St%20Hilo%20HI" target="_blank" rel="noopener">Suisan Fish Market</a></i>、<b>Big Island Candies</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Big%20Island%20Candies%20585%20Hinano%20St%20Hilo%20HI" target="_blank" rel="noopener">Big Island Candies</a></i>、<b>Café 100</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe%20100%20969%20Kilauea%20Ave%20Hilo%20HI" target="_blank" rel="noopener">Café 100</a></i>、<b>熔岩树州立纪念地</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Lava%20Tree%20State%20Monument%20Pahoa%20HI" target="_blank" rel="noopener">Lava Tree State Monument</a></i>、<b>艾萨克·黑尔海滩公园</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Isaac%20Hale%20Beach%20Park%20Pahoa%20HI" target="_blank" rel="noopener">Isaac Hale Beach Park (Pohoiki)</a></i>、<b>凯姆黑沙滩</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Kaimu%20Black%20Sand%20Beach%20Kalapana%20HI" target="_blank" rel="noopener">Kaimu Black Sand Beach (Kalapana)</a></i></span></div></li>
+      <li class="b"><a class="d" href="#d11">11</a><div class="c"><a class="t" href="#d11"><span class="date">10/27 周二</span>哈马库阿海岸瀑布和山谷</a><span class="s"><b>阿卡卡瀑布州立公园</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=%CA%BBAkaka%20Falls%20State%20Park%20Hawaii%20Island%20HI" target="_blank" rel="noopener">ʻAkaka Falls State Park</a></i>、<b>劳帕霍霍角</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Laup%C4%81hoehoe%20Point%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Laupāhoehoe Point</a></i>、<b>怀皮奥谷观景台</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Waipi%CA%BBo%20Valley%20Lookout%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Waipiʻo Valley Lookout</a></i>、<b>怀梅阿</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Waimea%20Kamuela%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Waimea (Kamuela)</a></i></span></div></li>
+      <li class="b"><a class="d" href="#d12">12</a><div class="c"><a class="t" href="#d12"><span class="date">10/28 周三</span>卡哈卢乌海龟、科纳咖啡园和冒纳凯阿山顶日落</a><span class="s"><b>卡哈卢乌海滩公园</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Kahalu%CA%BBu%20Beach%20Park%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kahaluʻu Beach Park</a></i>、<b>科纳咖啡园导览</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Heavenly%20Hawaiian%20Kona%20Coffee%20Farm%2C%2078-1136%20Bishop%20Rd%2C%20Holualoa%2C%20HI" target="_blank" rel="noopener">Heavenly Hawaiian Kona Coffee Farm</a></i>、<b>冒纳凯阿山顶</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Maunakea%20Summit%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Maunakea Summit</a></i></span></div></li>
+      <li class="b"><a class="d" href="#d13">13</a><div class="c"><a class="t" href="#d13"><span class="date">10/29 周四</span>卡拉凯夸湾和蝠鲼夜游</a><span class="s"><b>卡拉凯夸湾</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Kealakekua%20Bay%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kealakekua Bay</a></i>、<b>蝠鲼夜间浮潜</b> <i>Manta ray night snorkel</i></span></div></li>
+      <li class="b"><a class="d" href="#d14">14</a><div class="c"><a class="t" href="#d14"><span class="date">10/30 周五</span>北科哈拉海崖，傍晚飞檀香山</a><span class="s"><b>波罗卢谷观景台</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Polol%C5%AB%20Valley%20Lookout%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Pololū Valley Lookout</a></i>、<b>哈普纳海滩</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=H%C4%81puna%20Beach%20State%20Recreation%20Area%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Hāpuna Beach State Recreation Area</a></i>、<b>基霍洛湾</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Kiholo%20Bay%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kīholo Bay</a></i>、<b>马尼尼奥瓦利海滩（夸湾）</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Maniniowali%20Beach%20Kua%20Bay%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Mānīniʻōwali Beach (Kua Bay)</a></i></span></div></li>
+      <li class="o"><a class="d" href="#d15">回</a><div class="c"><a class="t" href="#d15"><span class="date">10/31 周六</span>帕里悬崖，晚上回程</a><span class="s"><b>努乌阿努帕里观景台</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Nu%CA%BBuanu%20Pali%20Lookout%20Oahu%20HI" target="_blank" rel="noopener">Nuʻuanu Pali Lookout</a></i>、<b>珍珠港：亚利桑那号纪念馆</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=Pearl%20Harbor%20National%20Memorial%20Honolulu%20HI" target="_blank" rel="noopener">Pearl Harbor National Memorial, USS Arizona Memorial</a></i></span></div></li>
+  </ol>
+</section>
+
+<aside class="alerts" aria-labelledby="alerts-title">
+  <h2 id="alerts-title">出发前先看近期情况</h2>
+  <p class="asof">信息截至2026年9月15日，出发前请再核实。</p>
+  <dl>
+    <dt>为什么没排考艾岛</dt>
+    <dd>9月8日飓风Lowell重创考艾岛，州旅游局建议近期要去的游客改期或换其他岛，州立公园、纳帕利海岸和卡拉劳步道仍关闭。纳帕利海岸和威美亚峡谷只能留到下次。</dd>
+    <dt>大岛南部卡乌区</dt>
+    <dd>8月飓风Lala冲毁了卡乌区的11号公路和不少社区，现在还在抢修。普纳卢乌黑沙滩和南角绿沙滩这次都没排，火山村和科纳之间一律走北边。</dd>
+    <dt>火山喷发节奏</dt>
+    <dd>基拉韦厄从2024年12月起间歇喷发，每次岩浆喷泉一般不到12小时，两次之间停两周以上。能不能赶上看运气，具体见后面“火山怎么安排”。</dd>
+    <dt>飓风季还没结束</dt>
+    <dd>飓风季到11月30日，今年特别活跃。建议买旅行保险，岛间机票、租车、住宿和观光团尽量订可免费取消的。</dd>
+  </dl>
+</aside>
+
+<!-- ===================== OAHU ===================== -->
+<section class="island o" aria-labelledby="oahu">
+  <div class="island-head">
+    <h2 id="oahu">欧胡岛<span class="latin">Oʻahu</span></h2>
+    <p>第1到2天，住威基基（已订 Airbnb）。机场取车，第3天早上还车。</p>
+  </div>
+
+  <article class="day" id="d1">
+    <div class="num">1<span class="date">10/17<br>周六</span></div>
+    <div class="body">
+      <div class="day-head"><h3>抵达，珍珠港和日落</h3><div class="totals"><span class="total"><span class="mode">开车</span>约1小时10分钟</span><span class="total"><span class="mode">徒步</span>约30分钟</span><span class="total"><span class="mode">飞行</span>约10小时</span></div></div>
+      <p class="move">交通：已订达美 DL 837，亚特兰大9:50起飞，檀香山13:36到，直飞9小时46分钟，3人。基础经济舱不含选座，托运行李另付费。机场取车后直接去珍珠港。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>取行李、取车约1小时，再开约16公里，20分钟</li>
+        <li class="stop">
+          <span class="zh">珍珠港：亚利桑那号纪念馆</span><span class="stay">停留约1小时10分钟</span><span class="tag">已订票</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Pearl%20Harbor%20National%20Memorial%20Honolulu%20HI" target="_blank" rel="noopener">Pearl Harbor National Memorial, USS Arizona Memorial</a></span>
+          <p>已订下午3:30场，3人。15:20前到剧院检票（预约时间前10分钟），项目45分钟：简短介绍、海军接驳船、在纪念馆停留。这次只看纪念馆，不看纪录片和展厅。场内不能带包，门口可付费寄存，相机可以带。停车7美元。</p>
+          <p><strong>行李：</strong>这时还没入住，行李都在车里，贵重物品随身带走。</p>
+          <p><strong>实际：</strong>10/17航班晚点，这场没赶上，改用10/31下午2:15场（2张）。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>到威基基住处入住（下午4点以后），约20公里，30分钟；再开约3公里，10分钟到魔术岛</li>
+        <li class="stop">
+          <span class="zh">魔术岛</span><span class="stay">停留约1小时，待到日落</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Magic%20Island%20Ala%20Moana%20Regional%20Park%20Honolulu%20HI" target="_blank" rel="noopener">Magic Island, Ala Moana Regional Park</a></span>
+          <p>在威基基西边，傍晚拍日落和海湾里的帆船。10月亚特兰大比夏威夷早6小时，早点睡，第二天5:15就要出发。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约1.5公里，5分钟到 Ala Moana 购物中心旁边吃晚饭，车停购物中心靠 Piikoi St 一侧</li>
+        <li class="stop">
+          <span class="zh">晚饭：Totoya 海鲜盖饭</span><span class="stay">停留约1小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Totoya%20Ala%20Moana%2C%20436%20Piikoi%20St%2C%20Honolulu%2C%20HI" target="_blank" rel="noopener">Totoya とと家 Ala Moana</a></span>
+          <p>日式海鲜盖饭小店，招牌是ねぎとろ丼（金枪鱼泥盖饭），每碗配味噌汤，加酱油蛋黄好吃，人均约 $30–60。晚市5:00到8:30，不订位，店很小，周六晚上可能要排队；排太久就去旁边的 Foodland Farms 买 poke 和熟食。</p>
+          <p>吃完在 <a href="https://www.google.com/maps/search/?api=1&amp;query=Foodland%20Farms%20Ala%20Moana%2C%201450%20Ala%20Moana%20Blvd%2C%20Honolulu%2C%20HI" target="_blank" rel="noopener">Foodland Farms</a> 超市（营业到晚上10点）买第二天的早饭：明早5:15出发，那时没有店开门。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回威基基住处，约3公里，10分钟，8点多到</li>
+      </ul>
+      <p class="tip"><strong>住宿：</strong>Airbnb「2 Bedroom Waikiki Apt Sleeps 6 Free Parking」，在威基基北边的阿拉怀运河旁，含免费停车，住10/17和10/18两晚。下午4点以后入住，10/19上午10点前退房。确认码 HMXXXXXXXX。订好24小时后不可退款。</p>
+      <p class="tip"><strong>吃饭：</strong>早饭在亚特兰大吃；达美往返夏威夷的航班经济舱一般送一顿餐，保险起见在机场买点吃的带上。落地到晚饭有5个小时，下飞机先吃点零食垫一下；珍珠港里不能带包，进去前吃完。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d2">
+    <div class="num">2<span class="date">10/18<br>周日</span></div>
+    <div class="body">
+      <div class="day-head"><h3>东岸日出到北岸日落</h3><div class="totals"><span class="total"><span class="mode">开车</span>约5小时</span><span class="total"><span class="mode">徒步</span>约2.5小时</span></div></div>
+      <p class="move">交通：全天自驾，先去东岸，再沿海岸线往北到北岸，晚上走中部高速回威基基。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>从威基基出发，约29公里，35分钟</li>
+        <li class="stop">
+          <span class="zh">拉尼凯碉堡步道</span><span class="stay">停留约1.5小时，含上下山</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Lanikai%20Pillbox%20Hike%20Oahu%20HI" target="_blank" rel="noopener">Lanikai Pillbox Hike (Kaʻiwa Ridge Trail)</a></span>
+          <p>5点多从威基基出发，摸黑上山约30分钟，坡陡土滑，要头灯和抓地好的鞋。住宅区停车必须按路牌停。</p>
+          <p class="shoot">日出从海上的莫库卢阿双岛（Mokulua Islands）后面升起，是欧胡岛最经典的日出机位。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约16公里，25分钟</li>
+        <li class="stop">
+          <span class="zh">马卡普乌角灯塔步道</span><span class="stay">停留约1.5小时，含往返步行</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Makapu%CA%BBu%20Point%20Lighthouse%20Trail%20Oahu%20HI" target="_blank" rel="noopener">Makapuʻu Point Lighthouse Trail</a></span>
+          <p>铺装路，往返1小时左右。</p>
+          <p class="shoot">上午光线好，俯拍红顶灯塔、蓝绿色海水和兔子岛（Mānana Island）。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约4公里，6分钟</li>
+        <li class="stop">
+          <span class="zh">哈罗纳喷水孔和拉奈观景点</span><span class="stay">停留约30分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=H%C4%81lona%20Blowhole%20Lookout%20Oahu%20HI" target="_blank" rel="noopener">Hālona Blowhole Lookout &amp; Lānaʻi Lookout</a></span>
+          <p>两个路边观景点相距约1.5公里，开车3分钟，都是黑色熔岩海岸。喷水孔要有浪才喷得高。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>经凯卢阿（Kailua）北上，约46公里，1小时</li>
+        <li class="stop">
+          <span class="zh">古阿洛阿区域公园</span><span class="stay">停留约45分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kualoa%20Regional%20Park%20Oahu%20HI" target="_blank" rel="noopener">Kualoa Regional Park</a></span>
+          <p>海边草坪正对莫科利伊岛（Mokoliʻi），背后是古阿洛阿牧场的锯齿状山脊。沿路还有好几个路边停车点可以拍山谷。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>经卡胡库（Kahuku）和日落海滩，约53公里，1小时10分钟，北岸公路常堵车；途经卡胡库的虾餐车可以吃午饭</li>
+        <li class="stop">
+          <span class="zh">拉尼亚凯亚海滩</span><span class="stay">停留约30分钟</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Laniakea%20Beach%20Oahu%20HI" target="_blank" rel="noopener">Laniakea Beach</a></span>
+          <p>常有绿海龟上岸休息。保持3米以上距离，不要触碰。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约5公里，10分钟</li>
+        <li class="stop">
+          <span class="zh">威美亚湾和鲨鱼湾</span><span class="stay">停留约1.5小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Waimea%20Bay%20Oahu%20HI" target="_blank" rel="noopener">Waimea Bay &amp; Shark's Cove</a></span>
+          <p>威美亚湾是北岸最漂亮的海湾；往北约2公里（开车4分钟）的鲨鱼湾是熔岩潮池，浪小时可以下水。10月北岸开始起冬季大浪，看救生员提示。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>从鲨鱼湾约4公里，6分钟</li>
+        <li class="stop">
+          <span class="zh">日落海滩</span><span class="stay">停留约1.5到2小时，待到日落</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Sunset%20Beach%20Oahu%20HI" target="_blank" rel="noopener">Sunset Beach</a></span>
+          <p class="shoot">日落时逆光拍大浪和冲浪的人，用高速快门。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回威基基住处，约60公里，1小时15分钟</li>
+      </ul>
+      <p class="tip"><strong>这天很满：</strong>时间不够时先删鲨鱼湾，保住日落海滩。10月北岸下不下水全看当天海况。</p>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== MAUI ===================== -->
+<section class="island m" aria-labelledby="maui">
+  <div class="island-head">
+    <h2 id="maui">茂宜岛<span class="latin">Maui</span></h2>
+    <p>第3到7天，全程租车。凯希住2晚（已订），哈纳住1晚（已订），西毛伊卡阿纳帕利的凯悦住2晚（已订）。</p>
+  </div>
+
+  <article class="day" id="d3">
+    <div class="num">3<span class="date">10/19<br>周一</span></div>
+    <div class="body">
+      <div class="day-head"><h3>钻石头山日出，飞茂宜岛</h3><div class="totals"><span class="total"><span class="mode">开车</span>约1.5小时</span><span class="total"><span class="mode">徒步</span>约2小时</span><span class="total"><span class="mode">飞行</span>约40分钟</span></div></div>
+      <p class="move">交通：早上爬完钻石头山，开到檀香山机场还车，坐已订的阿拉斯加航空 AS 1066 飞卡胡卢伊（OGG），10:19起飞、11:02到，座位11F、11E、12F。9:29前（起飞前50分钟）要办完值机和托运。落地后11:30取车，在怀卢库吃午饭，下午去凯希入住，今明两晚住凯希，已订好 Airbnb。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>5:50出门时退房，行李放后备箱，从威基基出发，约5公里，10分钟</li>
+        <li class="stop">
+          <span class="zh">钻石头山</span><span class="stay">停留约1.5到2小时，含上下山</span><span class="tag">已订</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Diamond%20Head%20State%20Monument%20Oahu%20HI" target="_blank" rel="noopener">Diamond Head State Monument (Lēʻahi)</a></span>
+          <p>早上6点开门就进，往返约1.5小时。非居民必须提前预约入园时段。</p>
+          <p class="shoot">山顶往西俯瞰威基基和檀香山的海岸线，清晨城市是顺光。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>到檀香山机场还车，约20公里，30分钟，早高峰可能更久</li>
+        <li class="leg"><span class="mode">飞行</span>AS 1066，檀香山10:19起飞，11:02到卡胡卢伊，43分钟</li>
+        <li class="leg"><span class="mode">开车</span>11:30取车，在怀卢库吃午饭，再到伊奥山谷，约12公里，20分钟</li>
+        <li class="stop">
+          <span class="zh">伊奥山谷州立纪念地</span><span class="stay">停留约1小时</span><span class="tag">已订</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=%CA%BB%C4%AAao%20Valley%20State%20Monument%20Maui%20HI" target="_blank" rel="noopener">ʻĪao Valley State Monument</a></span>
+          <p>离卡胡卢伊机场20分钟。从停车场步行约10分钟到观景台，看高约370米的伊奥针峰（ʻĪao Needle），山谷里雨林和溪流都很好拍。非居民预约1.5小时的时段，7点到18点开放。</p>
+          <p class="shoot">午后山谷里经常起云，针峰时隐时现，多等一会儿。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>到凯希住处，约25公里，35分钟；路过卡胡卢伊时买菜和明早上山吃的东西</li>
+        <li class="stop">
+          <span class="zh">卡马奥莱一号海滩</span><span class="stay">停留约1小时，待到日落</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kamaole%20Beach%20Park%20I%20Kihei%20HI" target="_blank" rel="noopener">Kamaʻole Beach Park I</a></span>
+          <p>住处过马路就是海滩，走过去几分钟。凯希在茂宜岛西南岸，海滩朝西，10月日落大约6点10分。看完日落早点休息，明早6:50出发上哈雷阿卡拉。</p>
+          <p class="shoot">太阳落在偏西南的海面上，左边是卡霍奥拉韦岛（Kahoʻolawe）和月牙形的摩洛基尼火山口，右边远处是拉奈岛（Lānaʻi）。日落后十几分钟天空常常烧红。</p>
+        </li>
+        <li class="leg"><span class="mode">步行</span>回住处，几分钟</li>
+      </ul>
+      <p class="tip"><strong>住宿：</strong>Airbnb「Across Beach! Ground Floor 2 Bed 2 Bath, Sleeps 6」，海滩对面的一楼，2卧2卫，住10/19和10/20两晚。下午3点以后入住，10/21上午11点前退房。确认码 HMXXXXXXXX。晚上10点到早上8点是安静时间，第4天早上6:50和第5天早上7:20出门都要轻一点。订好24小时内可免费取消；10/12下午3点前取消退部分房费。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d4">
+    <div class="num">4<span class="date">10/20<br>周二</span></div>
+    <div class="body">
+      <div class="day-head"><h3>哈雷阿卡拉：火山口徒步</h3><div class="totals"><span class="total"><span class="mode">开车</span>约3.5小时</span><span class="total"><span class="mode">徒步</span>约3.5到4小时</span></div></div>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>6:50从凯希出发，经卡胡卢伊和普卡拉尼上山，约77公里，1小时45分钟（不算堵车），最后33公里是盘山路；8:40前后到山顶游客中心</li>
+        <li class="stop">
+          <span class="zh">哈雷阿卡拉国家公园（山顶区）</span><span class="stay">停车，看一眼山顶</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Haleakal%C4%81%20National%20Park%20Maui%20HI" target="_blank" rel="noopener">Haleakalā National Park, Summit District</a></span>
+          <p>日出预约没抢到，改成上午来：7点以后进山不用预约，在入口按车交国家公园门票。山顶海拔3055米，早上还冷，带外套、帽子、手套，走起来再脱；高海拔太阳很毒，防晒霜和墨镜都要带，每人带2升水。</p>
+          <p class="shoot">上午云一般还在山下，火山口全景最清楚，远处是云海；中午以后云常从山口灌进火山口，所以先走步道。</p>
+        </li>
+        <li class="leg"><span class="mode">步行</span>步道起点就在山顶游客中心停车场，步行几分钟</li>
+        <li class="stop">
+          <span class="zh">滑沙步道</span><span class="stay">停留约3到4小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Keonehe%27ehe%27e%20Sliding%20Sands%20Trailhead%20Haleakala%20HI" target="_blank" rel="noopener">Sliding Sands Trail (Keoneheʻeheʻe)</a></span>
+          <p>8:45左右开始，下到火山口里，走到卡卢乌欧卡奥奥火山渣锥（Ka Luʻu o ka ʻŌʻō）往返约9公里，12:15前后回到起点。不用预约。回程全是高海拔上坡，体力不够就走一半折返。</p>
+          <p class="shoot">上午斜射光下，红、黑、橙色的火山渣锥颜色最饱和。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>下山方向约2.5公里，5分钟</li>
+        <li class="stop">
+          <span class="zh">卡拉哈库观景点和莱莱伊维观景点</span><span class="stay">停留约30分钟</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kalahaku%20Overlook%20Maui%20HI" target="_blank" rel="noopener">Kalahaku Overlook &amp; Leleiwi Overlook</a></span>
+          <p>下山途中的两个观景点，从不同角度看火山口。卡拉哈库只能在下山方向转进去；两处相距约3公里，开车6分钟。卡拉哈库有夏威夷特有的银剑草（ʻāhinahina），不能触碰。</p>
+          <p class="wild">下山路上和公园入口附近常能看到夏威夷州鸟夏威夷雁（nēnē）。它是濒危物种，不要喂，园内开车放慢。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回凯希住处，约79公里，1小时45分钟，路上在 Kula 或 Pukalani 吃午饭，3点多到</li>
+      </ul>
+      <p class="tip"><strong>下午：</strong>回住处休息。体力还行傍晚过马路去海滩看日落，凯希一带超市和餐馆都多。不建议晚上再上山拍星空：来回要3小时，第二天一早还要开哈纳公路。</p>
+      <p class="tip"><strong>门票：</strong>国家公园门票3天有效，第6天去基帕胡卢区还能用，留好收据。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d5">
+    <div class="num">5<span class="date">10/21<br>周三</span></div>
+    <div class="body">
+      <div class="day-head"><h3>哈纳公路，住哈纳</h3><div class="totals"><span class="total"><span class="mode">开车</span>约3小时10分钟</span><span class="total"><span class="mode">徒步</span>约2小时</span></div></div>
+      <p class="move">交通：带上行李，早上7:20从凯希退房出发，经卡胡卢伊和派亚进哈纳公路，一路走走停停到哈纳，今晚住哈纳毛伊度假村（Hyatt），已订好。在派亚加满油、买早餐。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>从凯希出发，经卡胡卢伊、派亚，约34公里，40分钟</li>
+        <li class="stop">
+          <span class="zh">霍奥基帕观景台</span><span class="stay">停留约10分钟</span><span class="tag">可选</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hookipa%20Lookout%20Maui%20HI" target="_blank" rel="noopener">Hoʻokipa Lookout</a></span>
+          <p>过了派亚就在路边，崖上停车看北岸的浪和冲浪的人。海龟多在下午以后上岸，早上看运气。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约10公里，15分钟</li>
+        <li class="stop">
+          <span class="zh">双瀑布</span><span class="stay">停留约45分钟，含步行</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Twin%20Falls%20Maui%20HI" target="_blank" rel="noopener">Twin Falls</a></span>
+          <p>私人农场里的瀑布，停车付费，步行约15分钟。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约14公里，25分钟</li>
+        <li class="stop">
+          <span class="zh">伊甸园植物园</span><span class="stay">停留约1小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Garden%20of%20Eden%20Arboretum%20Maui%20HI" target="_blank" rel="noopener">Garden of Eden Arboretum</a></span>
+          <p>私人植物园，现场买票。</p>
+          <p class="shoot">园内高处能拍到海边的基欧普卡岩（Keopuka Rock）和普奥霍卡莫阿瀑布（Puohokamoa Falls）。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约10公里，25分钟</li>
+        <li class="stop">
+          <span class="zh">凯阿纳埃半岛</span><span class="stay">停留约30分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Ke%CA%BBanae%20Peninsula%20Maui%20HI" target="_blank" rel="noopener">Keʻanae Peninsula</a></span>
+          <p class="shoot">黑色熔岩礁上浪花很大，用慢门拍白色水流。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约6公里，12分钟</li>
+        <li class="stop">
+          <span class="zh">瓦伊卡尼上瀑布（三熊瀑布）</span><span class="stay">停留约10分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Upper%20Waikani%20Falls%20Maui%20HI" target="_blank" rel="noopener">Upper Waikani Falls (Three Bears Falls)</a></span>
+          <p>在桥边，三股瀑布并排落下。路边几乎没有停车位，别堵在桥上。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约5公里，10分钟</li>
+        <li class="stop">
+          <span class="zh">普阿卡阿州立路边公园</span><span class="stay">停留约20分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Pua%CA%BBa%20Ka%CA%BBa%20State%20Wayside%20Maui%20HI" target="_blank" rel="noopener">Puaʻa Kaʻa State Wayside</a></span>
+          <p>路边雨林里的小瀑布和水潭，有厕所，适合中途休息。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约15公里，30分钟</li>
+        <li class="stop">
+          <span class="zh">哈纳熔岩管</span><span class="stay">停留约45分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=H%C4%81na%20Lava%20Tube%20Maui%20HI" target="_blank" rel="noopener">Hāna Lava Tube (Kaʻeleku Cave)</a></span>
+          <p>可选。私人经营的大型熔岩管，自助参观，出发前查开放时间。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>经哈纳镇往南，约11公里，20分钟</li>
+        <li class="stop">
+          <span class="zh">哈莫阿海滩</span><span class="stay">停留约1.5小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hamoa%20Beach%20Maui%20HI" target="_blank" rel="noopener">Hamoa Beach</a></span>
+          <p>哈纳以南的弯月形沙滩，背后是绿色峭壁。傍晚在这里散步，然后回哈纳住处。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回哈纳毛伊度假村，约4公里，10分钟</li>
+      </ul>
+      <p class="tip"><strong>住宿：</strong>哈纳毛伊度假村（Hāna-Maui Resort, a Destination by Hyatt Hotel），地址 5031 Hana Hwy, Hana, HI 96713，电话 +1 808-400-1234，在哈纳镇上、哈纳湾旁边。成员B 用 World of Hyatt 免费房晚订的，确认号 XXXXXXXX，入住人是 成员B，办入住要她本人的证件和信用卡。下午4点以后入住，第二天上午11点前退房。房间是2张 Queen 床，带阳台。房费免费，另付度假村费每晚45美元和税，在酒店付。入住7天前（10/14前）可免费取消，之后收一晚费用。酒店的 Hana Ranch 餐厅在营业，晚饭可以在这里吃。入住时跟前台说好第二天5:55就走，问清楚怎么快速退房。原来订的 Airbnb（Hana Kai Maui #206）已取消并全额退款。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d6">
+    <div class="num">6<span class="date">10/22<br>周四</span></div>
+    <div class="body">
+      <div class="day-head"><h3>哈纳清晨，竹林瀑布，去西毛伊</h3><div class="totals"><span class="total"><span class="mode">开车</span>约5小时</span><span class="total"><span class="mode">徒步</span>约3.5小时</span></div></div>
+      <p class="move">交通：上午在哈纳一带拍完，中午前后原路返回，经卡胡卢伊去西毛伊，加上午饭和加油一般要4.5到5小时，傍晚5点到6点到卡阿纳帕利的凯悦酒店入住。这天到这里就结束，赶得上的话在酒店前的卡阿纳帕利海滩看日落。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>5:55出门时退房，从哈纳毛伊度假村出发，约3公里，6分钟</li>
+        <li class="stop">
+          <span class="zh">科基海滩和阿劳岛</span><span class="stay">停留约45分钟，含等日出</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Koki%20Beach%20Maui%20HI" target="_blank" rel="noopener">Koki Beach &amp; ʻĀlau Island</a></span>
+          <p>离哈纳镇几分钟车程。</p>
+          <p class="shoot">日出机位：太阳从海上的阿劳岛旁边升起，岛上有几棵椰子树，前景是红褐色的沙滩和礁石。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>往北经哈纳镇，约9公里，15分钟</li>
+        <li class="stop">
+          <span class="zh">瓦伊阿纳帕纳帕州立公园</span><span class="stay">停留约1.5小时</span><span class="tag">已订</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Wai%CA%BB%C4%81napanapa%20State%20Park%20Maui%20HI" target="_blank" rel="noopener">Waiʻānapanapa State Park</a></span>
+          <p>已订10/22入园（参考号 6ab27be84635cb8707c994f7），电子收据存在手机里。拍完日出直接过来。非居民必须提前预约，而且要在预约时段开始后30分钟内到，晚到可能被拒绝入园，也不退款。停车场步行约5分钟到黑沙滩。</p>
+          <p class="shoot">黑沙滩面朝东北，上午光线最好：黑沙、绿植、蓝海三种颜色对比最强。沿海岸步道还能拍到海蚀拱和喷水孔。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>往南经哈纳镇，约17公里，35分钟，路窄弯多</li>
+        <li class="stop">
+          <span class="zh">怀卢阿瀑布</span><span class="stay">停留约15分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Wailua%20Falls%20Maui%20HI" target="_blank" rel="noopener">Wailua Falls (Hāna)</a></span>
+          <p>哈纳以南的路边瀑布，下车就能拍。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约3公里，7分钟到基帕胡卢区停车场</li>
+        <li class="stop">
+          <span class="zh">皮皮瓦伊步道（基帕胡卢区）</span><span class="stay">停留约3小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=P%C4%ABp%C4%ABwai%20Trail%20Maui%20HI" target="_blank" rel="noopener">Pīpīwai Trail, Kīpahulu District</a></span>
+          <p>属于哈雷阿卡拉国家公园。往返约6.4公里，穿过一片高大的竹林，终点是约120米高的韦莫库瀑布（Waimoku Falls），留3小时。起点附近是奥赫奥峡谷（ʻOheʻo Gulch）的阶梯水潭，目前禁止下水，只能在步道边的观景点看。</p>
+          <p class="shoot">竹林里光线暗，调高感光度或者带三脚架；风吹竹子会互相敲击，录一段声音也值得。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>原路返回，经哈纳、卡胡卢伊到卡阿纳帕利凯悦，约150公里，纯开车约4小时；加上午饭、加油和回程车流，一般要4.5到5小时</li>
+      </ul>
+      <p class="tip"><strong>注意：</strong>不要从基帕胡卢继续往南绕岛走皮伊拉尼公路，很多租车合同不允许，原路返回。9月飓风期间凯阿纳埃附近有落石，出发前查夏威夷交通局（HDOT）的路况。去西毛伊会经过拉海纳，镇子仍在2023年大火后重建，请不要在烧毁区域停车拍照。</p>
+      <p class="tip"><strong>住宿：</strong>凯悦卡阿纳帕利度假村（Hyatt Regency Maui Resort and Spa），地址 200 Nohea Kai Dr, Lahaina, HI 96761，电话 +1 808-661-1234，在卡阿纳帕利海滩南端，住10/22和10/23两晚。成员B 用 World of Hyatt 免费房晚订的，确认号 XXXXXXXX，入住人是 成员B。下午4点以后入住，10/24上午11点前退房。海景套房，1张 King 床加沙发床，两个阳台；第三个人睡沙发床，入住时可以问前台要多的被褥。房费免费，另付度假村费每晚49美元和税。入住72小时前可免费取消，之后收两晚费用。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d7">
+    <div class="num">7<span class="date">10/23<br>周五</span></div>
+    <div class="body">
+      <div class="day-head"><h3>摩洛基尼浮潜和西毛伊海岸</h3><div class="totals"><span class="total"><span class="mode">开车</span>约2小时</span><span class="total"><span class="mode">徒步</span>约2.5小时</span><span class="total"><span class="mode">坐船</span>约5小时</span></div></div>
+      <p class="move">交通：早上6:30从卡阿纳帕利开车约40分钟到马阿拉埃亚港坐船，下午1点回港，简单吃点东西后开回西毛伊。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>从卡阿纳帕利凯悦出发，约32公里，40分钟到马阿拉埃亚港</li>
+        <li class="stop">
+          <span class="zh">摩洛基尼火山口</span><span class="stay">坐船约5小时（8:00到13:00）</span><span class="tag">已订船</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Maalaea%20Harbor%20Maui%20HI" target="_blank" rel="noopener">Molokini Crater</a></span>
+          <p><strong>已订：</strong>Molokini &amp; Turtle Arches Snorkel，船名 Kai Ko，3位成人，8:00从马阿拉埃亚港（Māʻalaea Harbor）出发，13:00回港；报到时间以确认邮件为准，一般提前30分钟。港口停车扫码付费，每小时1美元。</p>
+          <p>弯月形的火山口一半沉在海里，里面有250多种鱼，能见度好时能看到水下二十多米。第二站去海龟拱门（Turtle Arches）附近再浮潜一次。风一般中午才起来，越早出发海面越平。</p>
+          <p class="wild">火山口里是成群的珊瑚礁鱼；海龟镇一般能看到绿海龟，水里也要保持3米以上距离，不要触碰。</p>
+          <p class="shoot">水下要用防水壳或运动相机。往返途中能拍到哈雷阿卡拉山和火山口背后的卡霍奥拉韦岛（Kahoʻolawe）。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回港后开回西毛伊，约46公里，55分钟</li>
+        <li class="stop">
+          <span class="zh">霍诺卢阿湾</span><span class="stay">停留约1.5小时，含浮潜</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Honolua%20Bay%20Maui%20HI" target="_blank" rel="noopener">Honolua Bay</a></span>
+          <p>先在路边崖顶观景点俯拍，顺便看海况。浪小的话穿过一小片树林走到海边下水，约10分钟。岸边全是湿滑的大石头，没有沙滩，要穿防滑的水鞋；好的珊瑚在海湾右侧（面朝大海）。10月开始会有北面来的浪，浪大就只在观景点拍。</p>
+          <p class="wild">水里常能看到绿海龟和成群的珊瑚礁鱼，保持3米以上距离。</p>
+          <p class="shoot">午后太阳还高时，海水的蓝绿色层次最明显，偏振镜能去掉水面反光。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约4公里，8分钟到卡帕卢阿湾停车场</li>
+        <li class="stop">
+          <span class="zh">卡帕卢阿海岸步道</span><span class="stay">停留约30分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kapalua%20Coastal%20Trail%20Maui%20HI" target="_blank" rel="noopener">Kapalua Coastal Trail</a></span>
+          <p>下午沿着熔岩海岸走一段，连接几个海湾。</p>
+        </li>
+        <li class="leg"><span class="mode">步行</span>沿海岸步道往北约2.5公里，40分钟</li>
+        <li class="stop">
+          <span class="zh">龙牙岩</span><span class="stay">停留约1小时，待到日落</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dragon%27s%20Teeth%20Maui%20HI" target="_blank" rel="noopener">Dragon's Teeth (Makaluapuna Point)</a></span>
+          <p>海浪和风把熔岩雕成一排尖齿状的岩石。旁边是古代夏威夷人墓地，只走指定小路，不要进入围起来的区域。</p>
+          <p class="shoot">日落机位：岩石朝西北，夕阳下尖齿轮廓最清楚；有浪时用慢门拍浪花拍打岩石。</p>
+        </li>
+        <li class="leg"><span class="mode">步行</span>天黑后原路走回停车场，约40分钟，带头灯</li>
+        <li class="leg"><span class="mode">开车</span>回卡阿纳帕利凯悦，约13公里，20分钟</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== BIG ISLAND ===================== -->
+<section class="island b" aria-labelledby="big">
+  <div class="island-head">
+    <h2 id="big">大岛<span class="latin">Hawaiʻi Island</span></h2>
+    <p>第8到14天。前3晚住火山村（已订，离国家公园入口几分钟），后3晚住科纳南边的卡哈卢乌（已订）。希洛取车，科纳还车。</p>
+  </div>
+
+  <article class="day" id="d8">
+    <div class="num">8<span class="date">10/24<br>周六</span></div>
+    <div class="body">
+      <div class="day-head"><h3>飞希洛，第一眼看火山</h3><div class="totals"><span class="total"><span class="mode">开车</span>约2小时40分钟</span><span class="total"><span class="mode">徒步</span>约0.5小时</span><span class="total"><span class="mode">飞行</span>约1小时40分钟，檀香山转机等约4小时</span></div></div>
+      <p class="move">交通：早上7:05从卡阿纳帕利退房，开到卡胡卢伊机场（约50分钟），8:00还车。AS 1065 9:45起飞，10:29到檀香山。原定转乘的 AS 1042（11:10起飞）因飞机维修取消，航空公司改签到14:25从檀香山起飞的航班（确认号不变），约15:20到希洛（ITO），在檀香山机场等约4小时、吃午饭。要确认托运行李改挂到新航班；希洛 Alamo 原预约10:30取车，打电话告诉他们改成约15:20到。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>4点左右取完车，从希洛机场出发，约7公里，12分钟</li>
+        <li class="stop">
+          <span class="zh">彩虹瀑布</span><span class="stay">停留约15分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Rainbow%20Falls%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Rainbow Falls (Waiānuenue)</a></span>
+          <p>在希洛市区边上，下车就到。到的时候已经下午4点多，彩虹机会小，第10天上午再来补拍。非居民现场付入园费和停车费。</p>
+          <p class="shoot">上午阳光照进水雾时最容易出彩虹。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约3公里，6分钟</li>
+        <li class="stop">
+          <span class="zh">沸腾池</span><span class="stay">停留约15分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Boiling%20Pots%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Boiling Pots (Peʻepeʻe Falls)</a></span>
+          <p>彩虹瀑布上游几分钟车程，河水在熔岩石盆间翻滚，旁边还有一道瀑布。只在观景点看，不要下到河边。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约8公里，15分钟到 KTA 超市（Puainako 店，营业到晚上10点），买火山村三天的早餐和路上吃的，顺便买今晚的晚饭（熟食柜台有生鱼波奇、寿司和便当）</li>
+        <li class="leg"><span class="mode">开车</span>沿11号公路约40公里，45分钟到火山村住处，6点半左右入住，在住处吃晚饭。日落约5:55，后半段天黑，进火山村后路窄、没路灯</li>
+        <li class="leg"><span class="mode">开车</span>晚上从火山村出发，约8公里，15分钟</li>
+        <li class="stop">
+          <span class="zh">基拉韦厄观景点</span><span class="stay">停留约1小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=K%C4%ABlauea%20Overlook%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kīlauea Overlook</a></span>
+          <p>晚上9点以后去看火山口，有火光的话这时人少得多。喷泉从10/17起暂停，USGS 10/23通告说火山口里的北口和西口整夜都有中等到强的火光；暂停期间看到的主要是火光照亮低云的反光。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回火山村住处，约8公里，15分钟</li>
+      </ul>
+      <p class="tip"><strong>实际：</strong>10/24 檀香山→希洛的 AS 1042 取消，改签到14:25的航班，下午才到希洛。午饭改在檀香山机场吃；游客中心、蒸汽口、硫磺岸和纳胡库熔岩管挪到第9天上午伊基步道之后。</p>
+      <p class="tip"><strong>住宿：</strong>Airbnb「Home Away From Home in Tropical Rainforest Volcano」，整套房子，住10/24到10/27三晚。下午4点以后入住，10/27上午11点前退房。确认码 HMXXXXXXXX。晚上10点到早上8点是安静时间；要爬楼梯。10/17下午4点前取消可退部分房费。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d9">
+    <div class="num">9<span class="date">10/25<br>周日</span></div>
+    <div class="body">
+      <div class="day-head"><h3>夏威夷火山国家公园</h3><div class="totals"><span class="total"><span class="mode">开车</span>约3小时</span><span class="total"><span class="mode">徒步</span>约3.5小时</span></div></div>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>从火山村出发，约8公里，15分钟</li>
+        <li class="stop">
+          <span class="zh">乌埃卡胡纳观景台</span><span class="stay">停留约1小时，含等日出</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=U%C4%93kahuna%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Uēkahuna</a></span>
+          <p>天亮前到，俯瞰整个基拉韦厄火山口和里面的哈勒茂茂火山口（Halemaʻumaʻu），远处是冒纳罗亚山。没有喷发时它和基拉韦厄观景点看的是同一个火山口，但喷泉期间这里是主要观看点之一，不要跳过。5:30到6:00天还全黑，是一天里看火光最好的时候。拍完直接去伊基步道，赶在停车场停满前。</p>
+          <p class="wild">白尾鹲（koaʻe kea）常在火山口上空盘旋，白色长尾巴很好认，可以多等一会儿。公园里的停车场和路边也常有夏威夷雁（nēnē），开车放慢。</p>
+          <p class="shoot">日出前后火光和天色能在同一张照片里平衡。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约6.5公里，10分钟到基拉韦厄伊基观景点停车场，这么早停车场还很空</li>
+        <li class="stop">
+          <span class="zh">基拉韦厄伊基步道</span><span class="stay">停留约2到2.5小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=K%C4%ABlauea%20Iki%20Trail%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kīlauea Iki Trail</a></span>
+          <p>环线约5.3公里，累计爬升约120米，2小时左右。上下两段是雨林里的木栈道和石阶，中间穿过1959年喷发形成的熔岩湖底，约2.3公里完全没有遮挡。湖底没有明确的路，跟着石堆标记走。</p>
+          <p><strong>方向：</strong>上午走，选在湖底一路往西走的方向，太阳在背后；下午反过来。到起点先对照路线图确认从哪边下。</p>
+          <p><strong>停车：</strong>基拉韦厄伊基观景点停车场只有64个车位，上午10点基本停满。满了就停毁灭步道（Devastation Trail）或普乌普阿伊（Puʻupuaʻi）停车场，都有步道走过来。</p>
+          <p>崖顶常下雨、湖底暴晒，雨衣和防晒都要带。</p>
+          <p class="shoot">清晨火山口里常有薄雾。往西走时是顺光，熔岩裂缝和冒出的蒸汽层次清楚，回头拍又是逆光剪影。</p>
+        </li>
+        <li class="leg"><span class="mode">步行</span>车停在原地，沿路边走约500米，8分钟到熔岩管入口</li>
+        <li class="stop">
+          <span class="zh">纳胡库熔岩管</span><span class="stay">停留约30分钟</span><span class="tag">从第8天挪来</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Thurston%20Lava%20Tube%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Thurston Lava Tube (Nāhuku)</a></span>
+          <p>熔岩管环线步行约20分钟，中途穿过一段雨林。熔岩管自己的停车位很少，车留在伊基观景点停车场走过来就行。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约3.5公里，6分钟到毁灭步道停车场</li>
+        <li class="stop">
+          <span class="zh">毁灭步道</span><span class="stay">停留约30分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Devastation%20Trail%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Devastation Trail</a></span>
+          <p>1959年喷发时被火山渣掩埋的森林，只剩白色枯树。</p>
+          <p><strong>凯阿纳卡科伊观景点关闭：</strong>从10月初起，国家公园因火山活动不稳定临时关闭了凯阿纳卡科伊（Keanakākoʻi）这一侧的观景区，哈雷茂茂步道和拜伦岩架步道的一部分也关了（NPS 10/7通告），这次不去。毁灭步道停车场照常开放。不要绕过路障。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>沿火山口边缘路约6.5公里，11分钟到基拉韦厄游客中心</li>
+        <li class="stop">
+          <span class="zh">蒸汽口和硫磺岸</span><span class="stay">停留约50分钟，含游客中心</span><span class="tag">从第8天挪来</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Steam%20Vents%20Wahinekapu%20Hawaii%20Volcanoes%20National%20Park%20HI" target="_blank" rel="noopener">Steam Vents (Wahinekapu) &amp; Sulphur Banks (Haʻakulamanu)</a></span>
+          <p>游客中心9点开门，先进去看当天的火山通告和步道开放情况。地面裂缝冒蒸汽，岩石上有黄色硫磺结晶。蒸汽口路边就能停车；硫磺岸附近没有停车位，要停在基拉韦厄游客中心，沿硫磺岸步道（Sulphur Banks Trail）走过去，往返约20分钟。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>出公园回火山村吃饭、补觉，约5公里，10分钟</li>
+        <li class="leg"><span class="mode">开车</span>下午从火山村出发，约14公里，20分钟到火山口链路上的帕乌阿希火山口</li>
+        <li class="stop">
+          <span class="zh">火山口链路</span><span class="stay">停留约3小时20分钟，含沿途开车，在凯阿拉科莫观景点看日落</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Chain%20of%20Craters%20Road%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Chain of Craters Road</a></span>
+          <p>下午沿路一路下到海边，全程约32公里，不停车约50分钟，沿途没有加油站和补给。按少走路的顺序：帕乌阿希火山口（Pauahi Crater，停车后走几十米）→ 茂纳乌卢熔岩原（Mauna Ulu，只在停车场看）→ 直接开到路的尽头看霍莱伊海崖（Hōlei Pali）和海浪 → 回头在凯阿拉科莫观景点（Kealakomo Overlook）看日落。下午全程只走约0.5公里。</p>
+          <p><strong>霍莱伊海蚀拱已坍塌：</strong>国家公园10/1发布，霍莱伊海蚀拱（Hōlei Sea Arch）在9/27前后、热带风暴 Nolo 期间倒进海里。原址附近是封闭区，崖边不稳，不要靠近。普乌洛阿岩画（Puʻu Loa Petroglyphs）来回约2公里，想少走就跳过。</p>
+          <p><strong>路程：</strong>从毁灭步道停车场开约1公里到路口，再约6公里到帕乌阿希火山口，约2公里到茂纳乌卢，约11公里到凯阿拉科莫观景点，约13公里到终点。</p>
+          <p class="shoot">路的尽头拍海浪拍打黑色熔岩悬崖；日落在凯阿拉科莫观景点拍，熔岩原一路铺到海边。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>日落后从凯阿拉科莫观景点开回，约24公里，35分钟。先看观测站直播画面，有火光才绕去基拉韦厄观景点（多开约10分钟），没有就直接回火山村</li>
+        <li class="leg"><span class="mode">开车</span>回火山村住处，约8公里，15分钟</li>
+      </ul>
+      <p class="tip"><strong>少走路的走法：</strong>上午伊基步道换成只在基拉韦厄伊基观景点（Kīlauea Iki Overlook）崖顶看，加一个普乌普阿伊观景点（Puʻu Puaʻi Overlook），毁灭步道只走开头一段，硫磺岸跳过，可以在火山屋（Volcano House）边看火山口边吃午饭；下午按上面的顺序。全天只走约4公里。</p>
+      <p class="tip"><strong>夜里：</strong>带三脚架、头灯和外套，火山口海拔约1200米，夜里冷。国家公园内禁止无人机。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d10">
+    <div class="num">10<span class="date">10/26<br>周一</span></div>
+    <div class="body">
+      <div class="day-head"><h3>希洛美食和普纳黑沙滩</h3><div class="totals"><span class="total"><span class="mode">开车</span>约3小时30分钟</span><span class="total"><span class="mode">徒步</span>约1小时，共约4公里</span></div></div>
+      <p class="move">机动日：USGS 10/23通告说喷泉暂停，第56次预计10/29到11/5，这几天不会喷发，所以改去希洛和普纳。景点之间的车程按地图估算，导航以谷歌地图为准。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>7:45吃完早饭从火山村出发，约50公里，50分钟到希洛</li>
+        <li class="stop">
+          <span class="zh">彩虹瀑布</span><span class="stay">停留约20分钟，补拍彩虹</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Rainbow%20Falls%20Hilo%20HI" target="_blank" rel="noopener">Rainbow Falls (Waiānuenue)</a></span>
+          <p>上午阳光照进水雾，最容易出彩虹。第8天下午来过一次，这次专门补拍，第11天早上就不用再绕过来。非居民现场付入园费和停车费。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约3公里，8分钟到希洛市中心，路边停车</li>
+        <li class="stop">
+          <span class="zh">希洛农夫市场</span><span class="stay">停留约45分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hilo%20Farmers%20Market%20Hilo%20HI" target="_blank" rel="noopener">Hilo Farmers Market</a></span>
+          <p>每天7点到3点。热带水果、木瓜、百香果果酱和手工艺品，带现金。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约2.5公里，6分钟</li>
+        <li class="stop">
+          <span class="zh">莉莉乌欧卡拉尼花园</span><span class="stay">停留约45分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Liliuokalani%20Gardens%20Hilo%20HI" target="_blank" rel="noopener">Liliʻuokalani Gardens</a></span>
+          <p>希洛湾边的日式庭园，免费，全是平路：锦鲤池、红色小桥、石灯笼。走过小桥就是椰子岛（Moku Ola）。</p>
+        </li>
+        <li class="leg"><span class="mode">步行</span>沿 Lihiwai St 走几分钟</li>
+        <li class="stop">
+          <span class="zh">Suisan 鱼市</span><span class="stay">停留约20分钟，买午饭</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Suisan%20Fish%20Market%2093%20Lihiwai%20St%20Hilo%20HI" target="_blank" rel="noopener">Suisan Fish Market</a></span>
+          <p>本地鱼市的生鱼波奇（poke），评价里很多人说是全岛最好。周一营业9点到3点（周三、周日不开），没有堂食，买好带走。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约2公里，5分钟</li>
+        <li class="stop">
+          <span class="zh">Big Island Candies</span><span class="stay">停留约30分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Big%20Island%20Candies%20585%20Hinano%20St%20Hilo%20HI" target="_blank" rel="noopener">Big Island Candies</a></span>
+          <p>夏威夷果酥饼和巧克力的工厂店，营业8:30到5点。进门有试吃，隔着玻璃能看工人手工蘸巧克力，适合买伴手礼。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约1.5公里，5分钟</li>
+        <li class="stop">
+          <span class="zh">Café 100</span><span class="stay">停留约1小时，吃午饭</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe%20100%20969%20Kilauea%20Ave%20Hilo%20HI" target="_blank" rel="noopener">Café 100</a></span>
+          <p>据说是 loco moco（白饭上放汉堡肉、煎蛋，浇肉汁）的发源地。周一营业7点到2点，用点餐机下单，户外有带顶的桌子，带着 Suisan 的波奇一起吃也行。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>经帕霍阿（Pāhoa），约35公里，40分钟</li>
+        <li class="stop">
+          <span class="zh">熔岩树州立纪念地</span><span class="stay">停留约30分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Lava%20Tree%20State%20Monument%20Pahoa%20HI" target="_blank" rel="noopener">Lava Tree State Monument</a></span>
+          <p>1790年熔岩流过一片ʻōhiʻa森林，包住树干后流走，留下一根根中空的"熔岩树"。平路小环线约1公里，免费，7点到6:45开放。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约20分钟到普霍伊基（Pohoiki），按谷歌地图导航</li>
+        <li class="stop">
+          <span class="zh">艾萨克·黑尔海滩公园</span><span class="stay">停留约1小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Isaac%20Hale%20Beach%20Park%20Pahoa%20HI" target="_blank" rel="noopener">Isaac Hale Beach Park (Pohoiki)</a></span>
+          <p>2018年喷发后海边新形成的黑沙滩，旁边有几个天然温水池，可以泡脚或泡一下（水不消毒，有伤口别下）。海里浪大，不要下海游泳。想泡的话泳衣穿在里面，带毛巾。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>沿海边的137号公路（Red Road）约35分钟到卡拉帕纳，路窄弯多</li>
+        <li class="stop">
+          <span class="zh">凯姆黑沙滩</span><span class="stay">停留约45分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kaimu%20Black%20Sand%20Beach%20Kalapana%20HI" target="_blank" rel="noopener">Kaimu Black Sand Beach (Kalapana)</a></span>
+          <p>1990年熔岩吞掉了老凯姆海滩和卡拉帕纳村。从路的尽头穿过熔岩原走到新的黑沙滩，单程约800米。没有厕所和遮阳，穿运动鞋、带水，不适合下水。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>4:30出发，经130号、11号公路回火山村，约70公里，1小时15分钟，6点前到。路过 Keaʻau 顺便加油，明天要开一整天</li>
+      </ul>
+      <p class="tip"><strong>周一关门：</strong>希洛的伊米洛阿天文中心（ʻImiloa）和 Two Ladies Kitchen 麻糬店周一不开。南边的普纳卢乌黑沙滩公园从8/29起关闭，所以没走南线。</p>
+      <p class="tip"><strong>晚上：</strong>火山村最后一晚。想再看一次火光，就去基拉韦厄观景点（约8公里，15分钟）。住处10/27上午11点前退房（见第8天）。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d11">
+    <div class="num">11<span class="date">10/27<br>周二</span></div>
+    <div class="body">
+      <div class="day-head"><h3>哈马库阿海岸瀑布和山谷</h3><div class="totals"><span class="total"><span class="mode">开车</span>约4到5小时</span><span class="total"><span class="mode">徒步</span>约1小时</span></div></div>
+      <p class="move">交通：清晨最后看一次火山口后退房，经希洛沿19号公路北上，过怀梅阿到科纳。纯开车4到5小时，加上景点和午饭，整天要10小时左右。到科纳后不要再安排活动。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>从火山村经希洛，约67公里，1小时15分钟</li>
+        <li class="stop">
+          <span class="zh">阿卡卡瀑布州立公园</span><span class="stay">停留约45分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=%CA%BBAkaka%20Falls%20State%20Park%20Hawaii%20Island%20HI" target="_blank" rel="noopener">ʻAkaka Falls State Park</a></span>
+          <p>不到1公里的雨林环线，瀑布落差135米。非居民现场付费。</p>
+          <p class="shoot">阴天比大太阳好拍，瀑布和峡谷不会反差过大；用慢门拍丝绸水流。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约30公里，30分钟</li>
+        <li class="stop">
+          <span class="zh">劳帕霍霍角</span><span class="stay">停留约30分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Laup%C4%81hoehoe%20Point%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Laupāhoehoe Point</a></span>
+          <p class="shoot">熔岩岬角上海浪很大，适合慢门。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>经霍诺卡阿（Honokaʻa），约45公里，45分钟</li>
+        <li class="stop">
+          <span class="zh">怀皮奥谷观景台</span><span class="stay">停留约45分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Waipi%CA%BBo%20Valley%20Lookout%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Waipiʻo Valley Lookout</a></span>
+          <p>从崖顶看深绿色山谷、黑沙滩出海口和对面的瀑布。只到观景台，下谷的路不对游客自驾开放，出发前确认观景台开放。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约39公里，40分钟</li>
+        <li class="stop">
+          <span class="zh">怀梅阿</span><span class="stay">停留约1小时，吃午饭</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Waimea%20Kamuela%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Waimea (Kamuela)</a></span>
+          <p>高原牧场小镇，吃午饭。住处下午4点才能入住，先去科纳镇买菜、加油。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>到科纳镇买菜、加油，约63公里，1小时；再沿阿里义大道往南约9公里，20分钟到卡哈卢乌住处，4点以后入住</li>
+      </ul>
+      <p class="tip"><strong>住宿：</strong>Airbnb「Stunning Ocean View Beach Front Villa at Kahaluʻu」，整套，住10/27到10/30三晚。就在卡哈卢乌海滩公园旁边，走路几分钟；到凯阿霍乌湾的 Fair Wind 码头开车约5分钟。下午4点以后入住，10/30上午10点前退房。确认码 HMXXXXXXXX。安静时间是晚上9点到早上8点，冒纳凯阿那晚10点多才回，进门要轻。订好24小时后不可退款。原来误订的 Keaau 已在24小时内取消，没有扣款。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d12">
+    <div class="num">12<span class="date">10/28<br>周三</span></div>
+    <div class="body">
+      <div class="day-head"><h3>卡哈卢乌海龟、科纳咖啡园和冒纳凯阿山顶日落</h3><div class="totals"><span class="total"><span class="mode">开车</span>约1小时20分钟：咖啡园来回，加科纳镇集合点来回</span><span class="total"><span class="mode">徒步</span>约1小时，咖啡园土坡路</span><span class="total"><span class="mode">冒纳凯阿车程</span>约4小时，坐团里的车</span></div></div>
+      <ul class="stops">
+        <li class="leg"><span class="mode">步行</span>7:45从住处走到海滩公园，几分钟</li>
+        <li class="stop">
+          <span class="zh">卡哈卢乌海滩公园</span><span class="stay">停留约1.5小时，7:50到9:20</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kahalu%CA%BBu%20Beach%20Park%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kahaluʻu Beach Park</a></span>
+          <p>住处就在旁边，岸边直接下水看海龟，水浅浪小，适合在上高海拔之前轻松玩一下。早上水最平最清、人也少，所以提早下水。岸上和水里都保持3米以上距离。</p>
+        </li>
+        <li class="leg"><span class="mode">步行</span>9:20走回住处，冲澡、换衣服</li>
+        <li class="leg"><span class="mode">开车</span>9:50出发上山，从住处约7公里，15分钟，10:05前后到，留了10分钟余量</li>
+        <li class="stop">
+          <span class="zh">科纳咖啡园导览</span><span class="stay">停留约1小时35分钟，导览10:30到11:30</span><span class="tag">已订团</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Heavenly%20Hawaiian%20Kona%20Coffee%20Farm%2C%2078-1136%20Bishop%20Rd%2C%20Holualoa%2C%20HI" target="_blank" rel="noopener">Heavenly Hawaiian Kona Coffee Farm</a></span>
+          <p><strong>已订：</strong>Kona Coffee Farm Tour，10/28 上午10:30到11:30，3人，订单 #XXXXXX（Booking #XXXXXXXXX）。电话 (808) 303-2538。地址 78-1136 Bishop Rd, Holualoa，顺着 Bishop Rd 上坡，跟着橙色指示牌开进车道，停在访客停车场，到凉亭前台签到。</p>
+          <p>提前15分钟签到，先免费试喝。向导带着走咖啡树林和晒豆棚，讲种植、采摘、加工，结束后再品尝、逛店。路是土路，有坡，穿包脚的鞋。</p>
+          <p class="shoot">庄园在华拉莱火山（Hualālai）西坡高处，能俯瞰科纳海岸；上午云少，海景最清楚。咖啡树上红色的咖啡果和庄园花园适合拍特写。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>11:40回住处，约15分钟；午饭、休息到13:20。冒纳凯阿团14:05接人，比原来估的早，导览结束别多逗留</li>
+        <li class="leg"><span class="mode">开车</span>13:20出发去科纳镇的 Kona Crossroads 购物中心，约11公里，20到25分钟，13:50前到。车停在购物中心靠海一侧的 Denny&#39;s 旁边，找印着公司标志的停车牌，车在这里停到晚上</li>
+        <li class="stop">
+          <span class="zh">冒纳凯阿山顶</span><span class="stay">停留约7到8小时，含往返车程</span><span class="tag">已订团</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Maunakea%20Summit%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Maunakea Summit</a></span>
+          <p><strong>已订：</strong>Mauna Kea Summit Adventures 的 Sunset &amp; Stargazing Tour，3人，订单 #XXXXXXXXX（原来误订成9/28，已改到10/28）。</p>
+          <p><strong>接人：</strong>14:05在 Kona Crossroads 购物中心（75-1027 Henry St, Kailua-Kona）接人，至少提前15分钟到，手机保持开机，待在接人点附近。从 Henry St 开进停车场，右手边（山那侧）是 Domino&#39;s 和 AutoZone，左手边（海那侧）是 Denny&#39;s。团车是印着 Mauna Kea Summit Adventures 的14座奔驰四驱面包车。厕所在购物中心走廊里 AutoZone 和 Sakura 餐厅附近，不要用 Denny&#39;s 的。电话 (808) 322-2366。</p>
+          <p>下午出发。山顶海拔4205米，站在云海和天文台之间看日落，然后下到海拔2800米的游客信息站（Visitor Information Station）观星。上山顶必须开四驱车，多数租车合同不允许，报团最省心，团里有四驱车和防寒服。少数本地租车公司（例如 Harper）的四驱车允许上山，订车时确认合同条款。</p>
+          <p class="wild">碰运气：走鞍路上山途中，路边草原上有时能看到白天出来活动的夏威夷短耳鸮（pueo）。</p>
+          <p class="shoot">日落时天文台圆顶和云海是最经典的画面；日落后地平线上会出现地球阴影和粉色的维纳斯带。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>山顶下到游客信息站约30分钟，再回科纳约1小时30分钟，估计晚上10点左右回到 Kona Crossroads；再开车约20分钟回住处，进门要轻（晚上9点后是安静时间）</li>
+      </ul>
+      <p class="tip"><strong>高原反应：</strong>水肺潜水后24小时内不要上山，浮潜不影响。13岁以下儿童和孕妇不要上到游客信息站以上。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d13">
+    <div class="num">13<span class="date">10/29<br>周四</span></div>
+    <div class="body">
+      <div class="day-head"><h3>卡拉凯夸湾和蝠鲼夜游</h3><div class="totals"><span class="total"><span class="mode">开车</span>约20分钟</span><span class="total"><span class="mode">坐船</span>约4.5小时，另加夜游1.5小时</span></div></div>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>8:00从住处出发，约3公里，5分钟到凯阿霍乌湾的 Fair Wind 办公室</li>
+        <li class="stop">
+          <span class="zh">卡拉凯夸湾</span><span class="stay">坐船约4.5小时（8:30到13:30）</span><span class="tag">已订船</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kealakekua%20Bay%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kealakekua Bay</a></span>
+          <p>坐 Fair Wind II 早班船去库克船长纪念碑（Captain Cook Monument）前浮潜，是大岛水质最清的地方之一。8:30在凯阿霍乌湾报到，13:30回港，水里时间约2.5小时。大型双体船，有遮阳、厕所和淋浴，两侧宽台阶直接下水，含早餐和午餐。已订 Fair Wind Morning Kealakekua Snorkel Tour，3位成人。自己划皮划艇上岸需要许可证，坐船团最省事。</p>
+          <p class="wild">早上常能看到飞旋海豚，水下还有大量珊瑚礁鱼。联邦法规要求离海豚至少50码（约45米），不能下水游过去，只能远拍。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回住处，约3公里，5分钟。下午休息，冲洗装备，傍晚再去同一个码头</li>
+        <li class="leg"><span class="mode">开车</span>5:00从住处出发，约5分钟到凯阿霍乌湾，和早上是同一个 Fair Wind 办公室</li>
+        <li class="stop">
+          <span class="zh">蝠鲼夜间浮潜</span><span class="stay">17:30到19:30</span><span class="tag">已订船</span><span class="tag animal">动物</span><span class="en">Manta ray night snorkel</span>
+          <p>科纳最有名的夜间活动。已订 Fair Wind 的 Hula Kai，3人，17:30到19:30：坐5分钟船到蝠鲼村（Manta Village），天黑后扶着发光的漂浮平台，看蝠鲼在灯光下翻滚吃浮游生物。蝠鲼进食晚的话会比7:30晚一点回来。提供防寒泳衣，上船后有热可可和热汤。想拍的话带运动相机或防水壳。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回住处，约5分钟。住处晚上9点开始是安静时间</li>
+      </ul>
+      <p class="tip"><strong>一家包两场：</strong>上午的船和晚上的蝠鲼都是 Fair Wind，从凯阿霍乌湾同一个办公室出发，停车场在 78-7106 Kamehameha III Rd。</p>
+      <p class="tip"><strong>后备：</strong>上午的船当天因海况取消的话，改去两步浮潜点。它就在卡拉凯夸湾南边，岸边下水，不用预约。</p>
+    </div>
+  </article>
+
+  <article class="day" id="d14">
+    <div class="num">14<span class="date">10/30<br>周五</span></div>
+    <div class="body">
+      <div class="day-head"><h3>北科哈拉海崖，傍晚飞檀香山</h3><div class="totals"><span class="total"><span class="mode">开车</span>约3小时55分钟</span><span class="total"><span class="mode">徒步</span>约2.5小时</span><span class="total"><span class="mode">飞行</span>约50分钟</span></div></div>
+      <p class="move">交通：一早退房往北开，一路往回拍，傍晚6点在科纳机场（KOA）还车，坐已订的阿拉斯加航空 AS 1167 飞檀香山（19:15起飞，20:05到），住檀香山市中心。基霍洛湾10月晚上6点锁门，一定要在那之前出来。</p>
+      <p class="tip"><strong>行李：</strong>退房后行李一直在车里，波罗卢谷和基霍洛湾都是偏僻的停车场，夏威夷景点停车场砸车窗偷东西的事不少。行李全部放进后备箱，车内不要留任何东西。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>6:20从卡哈卢乌住处退房出发，约105公里，1小时40分钟</li>
+        <li class="stop">
+          <span class="zh">波罗卢谷观景台</span><span class="stay">停留约1.5小时，含下谷往返</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Polol%C5%AB%20Valley%20Lookout%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Pololū Valley Lookout</a></span>
+          <p>从卡哈卢乌开约1小时40分钟，在270号公路的尽头。时间够的话下到谷底的黑色卵石滩，陡而滑，往返约1小时。</p>
+          <p class="shoot">早上顺光，一层层海崖往远处排开。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约50公里，50分钟</li>
+        <li class="stop">
+          <span class="zh">哈普纳海滩</span><span class="stay">停留约1.5小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=H%C4%81puna%20Beach%20State%20Recreation%20Area%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Hāpuna Beach State Recreation Area</a></span>
+          <p>大岛最好的白沙滩之一，中午最后游一次泳。非居民收入园停车费。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约25公里，25分钟</li>
+        <li class="stop">
+          <span class="zh">基霍洛湾</span><span class="stay">停留约1.5小时，含往返步行</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kiholo%20Bay%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Kīholo Bay</a></span>
+          <p>10月大门晚上6点上锁，锁了车就开不出去，一定要在6点前离开。从停车处步行约15分钟，走过熔岩原到海湾，常有海龟在浅水里休息，海湾里有淡水泉形成的蓝绿色水塘。</p>
+          <p class="shoot">下午光线下熔岩的黑、水的蓝绿和海龟一起入画。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>往南约12公里，15分钟</li>
+        <li class="stop">
+          <span class="zh">马尼尼奥瓦利海滩（夸湾）</span><span class="stay">停留约1小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Maniniowali%20Beach%20Kua%20Bay%20Hawaii%20Island%20HI" target="_blank" rel="noopener">Mānīniʻōwali Beach (Kua Bay)</a></span>
+          <p>在基霍洛湾南边，离科纳机场约15分钟，黑色熔岩原中间的一小片白沙滩。</p>
+          <p class="shoot">午后太阳还高时，海水是透亮的蓝绿色，和黑色熔岩对比很强。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>到科纳镇吃晚饭，约20公里，25分钟；再开约12公里，20分钟到科纳机场，18:00还车，18:25前办完值机托运</li>
+        <li class="leg"><span class="mode">飞行</span>AS 1167，科纳19:15起飞，20:05到檀香山，座位20A、20B、21A；机场取车（Alamo 预约18:00，要提前打电话说会晚到），开约20分钟到市中心住处</li>
+      </ul>
+      <p class="tip"><strong>今晚住宿：</strong>Airbnb「Spacious Hotel/Apartment in Downtown with Parking」，在檀香山市中心，带停车位，住10/30一晚。下午3点以后键盘密码自助入住，10/31上午11点前退房。确认邮件里没写地址，在 Airbnb 行程页看；出发前确认收到门锁密码。确认码 HMXXXXXXXX。9/30下午3点前可免费取消，10/23下午3点前取消可退部分。</p>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== RETURN ===================== -->
+<section class="island o" aria-labelledby="home">
+  <div class="island-head">
+    <h2 id="home">回程日<span class="latin">Oʻahu</span></h2>
+    <p>10月31日。住檀香山市中心，上午去帕里观景台，晚上经凤凰城转机回亚特兰大。</p>
+  </div>
+
+  <article class="day" id="d15">
+    <div class="num">回<span class="date">10/31<br>周六</span></div>
+    <div class="body">
+      <div class="day-head"><h3>帕里悬崖，晚上回程</h3><div class="totals"><span class="total"><span class="mode">开车</span>约1小时</span><span class="total"><span class="mode">徒步</span>约30分钟</span><span class="total"><span class="mode">飞行</span>约12小时20分钟，含转机</span></div></div>
+      <p class="move">交通：10/30晚上在檀香山机场租了一天车（Alamo），10/31傍晚还车。上午三人一起开车去帕里观景台，回来退房（11点前），行李放后备箱，再送 成员C 去机场。</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>8:00三人一起从市中心住处出发，约10公里，20分钟</li>
+        <li class="stop">
+          <span class="zh">努乌阿努帕里观景台</span><span class="stay">停留约30分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Nu%CA%BBuanu%20Pali%20Lookout%20Oahu%20HI" target="_blank" rel="noopener">Nuʻuanu Pali Lookout</a></span>
+          <p>三人一起开车来，从市中心住处约20分钟，停车按车收费。站在科奥劳山脉的断崖上看整个迎风海岸。风非常大，帽子和镜头盖要拿稳。飓风Lowell后曾临时关闭，去之前确认开放（约早6点到晚6点）。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回住处，约20分钟；退房，行李放后备箱；10点开车送 成员C 去机场（约20分钟），然后吃午饭</li>
+        <li class="leg"><span class="mode">开车</span>13:00从市中心出发去珍珠港，约20分钟（10/17那场因航班晚点没赶上，改到这天）</li>
+        <li class="stop">
+          <span class="zh">珍珠港：亚利桑那号纪念馆</span><span class="stay">停留约1.5小时</span><span class="tag">已订票</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Pearl%20Harbor%20National%20Memorial%20Honolulu%20HI" target="_blank" rel="noopener">Pearl Harbor National Memorial, USS Arizona Memorial</a></span>
+          <p>已订下午2:15场，2张（成员A、成员B）。预约时间前10分钟检票，项目45分钟。离机场约15分钟。成员C 也想去的话，10/30下午3点（夏威夷时间）抢10/31早上7点多的场次，三人一起看完再送她去机场。</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>吃晚饭，17:15开车去檀香山机场还车，约15分钟</li>
+        <li class="leg"><span class="mode">飞行</span>已订西南航空 WN 1288 / WN 3385，19:55起飞，经凤凰城转机（停留2小时45分钟），11月1日13:15到亚特兰大，全程12小时20分钟</li>
+      </ul>
+      <p class="tip"><strong>机场：</strong>飞美国本土的航班至少提前2小时到，5:55前到机场。这张票含托运行李。</p>
+      <p class="tip"><strong>成员C：</strong>当天中午单独飞，经首尔转机回长沙（按“K1054”推测是大韩航空 KE054，13:05起飞，待确认）。上午可以一起去帕里观景台，10点开车送她去机场，国际航班提前3小时到。</p>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== WILDLIFE ===================== -->
+<section class="plain" aria-labelledby="wild">
+  <h2 id="wild">野生动物</h2>
+  <p>夏威夷的野生动物大多受法律保护，下面的距离是法规或美国国家海洋和大气管理局（NOAA）的建议。距离要求决定了大部分都得用长焦拍，建议带一支长焦镜头。</p>
+  <div class="table-scroll">
+    <table class="wild-table">
+      <thead>
+        <tr><th>动物</th><th>在哪里</th><th>距离和注意</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>绿海龟<span class="en">Green sea turtle (honu)</span></td>
+          <td><a href="#d2">第2天</a>拉尼亚凯亚海滩，<a href="#d5">第5天</a>霍奥基帕观景台（早上看运气），<a href="#d7">第7天</a>海龟镇和霍诺卢阿湾，<a href="#d12">第12天</a>卡哈卢乌，<a href="#d14">第14天</a>基霍洛湾</td>
+          <td>3米以上，不触碰，不挡它回海的路</td>
+        </tr>
+        <tr>
+          <td>飞旋海豚<span class="en">Spinner dolphin (naiʻa)</span></td>
+          <td><a href="#d13">第13天</a>卡拉凯夸湾，早上</td>
+          <td>法定至少50码（约45米），不能游过去</td>
+        </tr>
+        <tr>
+          <td>蝠鲼<span class="en">Manta ray (hāhālua)</span></td>
+          <td><a href="#d13">第13天</a>科纳夜游</td>
+          <td>不触碰，听向导指示</td>
+        </tr>
+        <tr>
+          <td>珊瑚礁鱼群<span class="en">Reef fish</span></td>
+          <td><a href="#d7">第7天</a>摩洛基尼和霍诺卢阿湾，<a href="#d13">第13天</a>卡拉凯夸湾，<a href="#d12">第12天</a>卡哈卢乌海滩公园</td>
+          <td>不站在珊瑚上</td>
+        </tr>
+        <tr>
+          <td>夏威夷雁<span class="en">Nēnē</span></td>
+          <td><a href="#d4">第4天</a>哈雷阿卡拉，<a href="#d9">第9到10天</a>火山国家公园</td>
+          <td>濒危，不喂食，园内开车放慢</td>
+        </tr>
+        <tr>
+          <td>白尾鹲<span class="en">White-tailed tropicbird (koaʻe kea)</span></td>
+          <td><a href="#d9">第9天</a>乌埃卡胡纳和火山口边缘</td>
+          <td>在火山口上空盘旋，远距离拍</td>
+        </tr>
+        <tr>
+          <td>夏威夷僧海豹<span class="en">Hawaiian monk seal</span></td>
+          <td>碰运气，任何海滩都可能遇到</td>
+          <td>极度濒危。15米以上；带幼崽的45米以上</td>
+        </tr>
+        <tr>
+          <td>夏威夷短耳鸮<span class="en">Pueo</span></td>
+          <td>碰运气，<a href="#d12">第12天</a>鞍路两侧草原</td>
+          <td>白天活动，停车时注意路况</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>10月不是季节的</h3>
+  <p>座头鲸12月到4月才来，1到3月最多。黑背信天翁（Laysan albatross）11月才回来筑巢，而且主要在考艾岛和欧胡岛卡艾纳角，这次都不去。</p>
+</section>
+
+<!-- ===================== NOT THIS TIME ===================== -->
+<section class="plain" aria-labelledby="skip">
+  <h2 id="skip">这次没排的知名风景</h2>
+  <p>这几处都很有名，但近期去不了或者不确定能不能去，出发前可以再查一下。</p>
+  <h3>考艾岛全岛</h3>
+  <p>纳帕利海岸（Nā Pali Coast）、威美亚峡谷（Waimea Canyon）、哈纳莱伊湾（Hanalei Bay）。飓风Lowell后州立公园和纳帕利海岸仍关闭，旅游局建议近期游客改期。</p>
+  <h3>普纳卢乌黑沙滩</h3>
+  <p>Punaluʻu Black Sand Beach。飓风Lala后被列为关闭，8月底县政府的租约到期，管理权回到私人地主手里，目前没有明确的开放通知。</p>
+  <h3>南角绿沙滩</h3>
+  <p>Papakōlea Green Sand Beach。同在卡乌区，Lala过后这一带还在恢复，不建议游客现在去添乱。</p>
+  <h3>冒纳罗亚路</h3>
+  <p>Mauna Loa Road，火山国家公园内基普卡普阿乌卢（Kīpukapuaulu）以后的路段仍关闭。</p>
+</section>
+
+<!-- ===================== RESERVATIONS ===================== -->
+<section aria-labelledby="book">
+  <h2 id="book">要提前订的</h2>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>项目</th><th>在哪订</th><th>什么时候订</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>哈雷阿卡拉日出<span class="en">Haleakalā sunrise</span></td>
+          <td>recreation.gov，每辆车1美元（门票另付）</td>
+          <td>10/18早上7点那批没抢到，取消日出，10/20改成上午去山顶走滑沙步道（7点以后进山不用预约）。</td>
+        </tr>
+        <tr>
+          <td>住宿<span class="en">Lodging</span></td>
+          <td>Airbnb；哈纳和卡阿纳帕利是 Hyatt（成员B 的免费房晚）</td>
+          <td>全部已订：威基基10/17到10/19（HMXXXXXXXX）、凯希10/19到10/21（HMXXXXXXXX）、哈纳毛伊度假村10/21到10/22（Hyatt XXXXXXXX）、凯悦卡阿纳帕利10/22到10/24（Hyatt XXXXXXXX）、火山村10/24到10/27（HMXXXXXXXX）、卡哈卢乌10/27到10/30（HMXXXXXXXX）、檀香山市中心10/30到10/31（HMXXXXXXXX）。误订的 Keaau 已取消，没有扣款。</td>
+        </tr>
+        <tr>
+          <td>钻石头山<span class="en">Diamond Head</span></td>
+          <td>夏威夷州立公园预约网站（gostateparks.hawaii.gov）</td>
+          <td>已订10/19。以预约确认上的时段为准，电子收据存在手机里。</td>
+        </tr>
+        <tr>
+          <td>伊奥山谷<span class="en">ʻĪao Valley</span></td>
+          <td>夏威夷州立公园预约网站</td>
+          <td>已订10/19。以预约确认上的时段为准，电子收据存在手机里。</td>
+        </tr>
+        <tr>
+          <td>瓦伊阿纳帕纳帕州立公园<span class="en">Waiʻānapanapa</span></td>
+          <td>夏威夷州立公园预约网站</td>
+          <td>已订10/22。必须在时段开始后30分钟内到，晚到可能被拒绝且不退款。</td>
+        </tr>
+        <tr>
+          <td>摩洛基尼浮潜船、冒纳凯阿山顶日落团、科纳咖啡园导览、卡拉凯夸湾浮潜船、蝠鲼夜游、希洛直升机</td>
+          <td>各家旅行公司官网</td>
+          <td>已订：摩洛基尼（10/23 Kai Ko）、卡拉凯夸湾（10/29 Fair Wind，订单 #XXXXXXXXX）、蝠鲼夜游（10/29 Fair Wind Hula Kai，订单 #XXXXXXXXX）、冒纳凯阿山顶日落观星团（10/28 Mauna Kea Summit Adventures，订单 #XXXXXXXXX）、科纳咖啡园导览（10/28 10:30 Heavenly Hawaiian，订单 #XXXXXX）。直升机不坐了，10/26改去希洛和普纳。</td>
+        </tr>
+        <tr>
+          <td>亚利桑那号纪念馆<span class="en">USS Arizona Memorial</span></td>
+          <td>recreation.gov，每人1美元</td>
+          <td>已订10/17下午3:30场，3张。另订10/31下午2:15场2张作备用，10/17没赶上才用。</td>
+        </tr>
+        <tr>
+          <td>岛间机票、租车</td>
+          <td>机票在 Priceline 订的阿拉斯加航空；租车通过 Chase Travel 订好</td>
+          <td>岛间机票3段已订，3人都选好座位：10/19 AS 1066 檀香山10:19→卡胡卢伊11:02（确认号 XXXXXX）；10/24 AS 1065 卡胡卢伊9:45→檀香山10:29，转乘的 AS 1042 因飞机维修取消，改签到14:25檀香山→希洛，约15:20到（XXXXXX）；10/30 AS 1167 科纳19:15→檀香山20:05（XXXXXX）。三段共1,283.55美元（含选座），票价不可退款；托运行李另付，每人第一件30美元、第二件40美元。租车4段已订：欧胡岛 Thrifty（10/17 15:00取到10/19 8:00还）、茂宜岛 Thrifty（10/19 11:30到10/24 8:00）、大岛 Alamo（希洛10/24 10:30取，科纳10/30 18:00还，柜台另付异地还车费约58美元）、欧胡岛 Alamo（10/30 18:00到10/31 18:00）。要打电话的：檀香山 Thrifty（10/17想提前到14:30左右取车，赶珍珠港）、希洛 Alamo（实际12:30左右取车）、檀香山 Alamo（实际20:30左右取车）。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== VOLCANO ===================== -->
+<section class="plain" aria-labelledby="volcano">
+  <h2 id="volcano">火山怎么安排</h2>
+  <p>喷泉通常只持续几个小时，火山观测站一般只能提前几天给出预报窗口，而且经常推迟。所以行程在大岛多留了一天机动，顺序也可以调。</p>
+  <h3>出发前一周</h3>
+  <p>看美国地质调查局夏威夷火山观测站（USGS Hawaiian Volcano Observatory）的每日通告和基拉韦厄直播摄像头。如果预报窗口落在行程前半段，就把茂宜岛和大岛对调：檀香山直接飞希洛，大岛玩完再飞茂宜岛，最后一天从茂宜岛飞檀香山转达美直飞回亚特兰大。</p>
+  <h3>到了大岛</h3>
+  <p>喷泉期间主要看点是乌埃卡胡纳、基拉韦厄观景点和火山口边缘步道（Crater Rim Trail）沿线。国家公园24小时开放，傍晚5点到9点最堵，9点以后到日出前体验好得多。</p>
+  <h3>安全</h3>
+  <p>喷发会释放二氧化硫等火山气体，有心肺问题的人要格外注意。只在开放的步道和观景点活动，远离崖边和地裂缝。不要绕过任何路障，哈勒茂茂火山口周边从2007年底起就对公众关闭。</p>
+</section>
+
+<!-- ===================== PRACTICAL ===================== -->
+<section class="plain" aria-labelledby="practical">
+  <h2 id="practical">拍摄和实用信息</h2>
+  <h3>月相</h3>
+  <p>这次大岛段是10月24到30日，10月26日前后是满月，夜里拍火光和星空都会受月光影响。冒纳凯阿观星那天（10/28）月亮晚上8点左右才升起，刚天黑的一个多小时最暗。10月银河核心天黑后不久就落到西南方低空，想拍要趁刚天黑。</p>
+  <h3>器材</h3>
+  <p>三脚架（山顶和海边风大，要能挂重物）、偏振镜（海水和瀑布去反光）、减光镜（瀑布和海浪慢门）、头灯、镜头布（海雾和雨）、防水袋（坐船）。国家公园内禁止无人机，州立公园起降也需要许可。</p>
+  <h3>天气和衣服</h3>
+  <p>10月是旱季尾声，西侧的科纳、西毛伊一带晴天多，东侧的哈纳、希洛和火山村经常下雨。哈雷阿卡拉和冒纳凯阿山顶接近冰点，火山村夜里也冷，要带保暖外套和雨衣。</p>
+  <h3>住宿</h3>
+  <p>全部已订：欧胡岛威基基2晚；茂宜岛凯希2晚、哈纳1晚、卡阿纳帕利2晚；大岛火山村3晚、卡哈卢乌3晚；10/30檀香山市中心1晚。两家凯悦都是 成员B 的名字，办入住要她本人在场。茂宜岛换住处比较多，去哈纳那天只带一个小包进住处。</p>
+  <h3>停车防盗</h3>
+  <p>夏威夷景点和步道口的停车场常有砸车窗偷东西的事。行李和相机包不用时放进后备箱，最好在出发前就放好，不要到了停车场才当着人放；车内不要留任何东西。</p>
+  <h3>时差</h3>
+  <p>10月亚特兰大比夏威夷早6小时，11月1日美国本土结束夏令时后变成5小时。前几天自然早醒，正好用来拍日出。</p>
+</section>
+
+<footer>
+  <p>近期路况、公园开放和火山信息来自美国地质调查局夏威夷火山观测站、美国国家公园管理局、夏威夷交通局和州立公园部门的公开通告，以及当地媒体报道，截至2026年9月15日。飓风季和火山状况变化很快，出发前请以官方网站为准。</p>
+</footer>
+
+</div>
+</body>
+</html>

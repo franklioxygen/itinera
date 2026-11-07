@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--
+  行程单网页模板（排版和配色同“夏威夷14天”那份）
+  怎么用：
+  1. 用任何文本编辑器打开，搜索“【”，把所有【】里的内容换成你的行程；MM/DD、周X、约X 也要换。
+  2. 换配色：只改 <style> 最上面 :root 那一段，浅色和深色各一套；一个地区一种颜色（r1/r2/r3/r4）。
+  3. 改天数：日期条 nav 上的 --days 写总格数，图例上的 --legend 按每个地区的天数写 fr。
+  4. 加一天：复制一整段 <article class="day">，改 id（d1、d2……）和日期条、目录里对应的链接。
+  5. 加地区：复制一整段 <section class="island rN">，class 和 id 改成下一个地区。
+  6. 地图链接：https://www.google.com/maps/search/?api=1&query=英文名+所在地（空格写成 %20）。
+  7. 门禁码、卫生间密码、卡号之类不要写进来，这份页面可能会分享给别人。
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【目的地】N天行程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   配色：换目的地时主要改这一段（浅色和深色各一套）
+   - 一个地区一种颜色：r1 = 地区一，r2 = 地区二，r3 = 地区三，r4 = 备用的第四个地区
+   - 浅色模式的地区色上要放白字，对白色的对比度至少 4.5:1
+   - 深色模式用同一色相、更亮的版本，色块上放深色字（--on-color）
+   - 下面的默认值就是夏威夷那份：欧胡青绿、茂宜琥珀、大岛火山红
+   ============================================================ */
+:root {
+  --bg: #EEF1EE;        /* 页面底色：浅灰绿 */
+  --surface: #F8FAF8;   /* “近期情况”框的底色 */
+  --ink: #1D272B;       /* 正文：深墨色 */
+  --ink-soft: #56636A;  /* 次要文字：日期、停留时间、路段 */
+  --line: #CBD3CF;      /* 分隔线、景点左边的竖线 */
+  --r1: #0E6B74;        /* 地区一（夏威夷版：欧胡岛，青绿） */
+  --r2: #946010;        /* 地区二（茂宜岛，琥珀） */
+  --r3: #B3263A;        /* 地区三（大岛，火山红） */
+  --r4: #3D5A8A;        /* 地区四（备用，石板蓝） */
+  --on-color: #FFFFFF;  /* 色块上的字 */
+  --serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;            /* 中文标题：粗宋体 */
+  --latin: "Newsreader", "Georgia", "Times New Roman", serif;                  /* 英文地名：斜体衬线 */
+  --sans: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif; /* 正文 */
+}
+/* 深色模式（跟随手机或电脑的系统设置） */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121A1D; --surface: #1A2427; --ink: #E4EAE7; --ink-soft: #A3B0AC; --line: #2E3B3F;
+    --r1: #5DBAC3; --r2: #E0A94F; --r3: #F2687C; --r4: #8EADE0; --on-color: #121A1D;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121A1D; --surface: #1A2427; --ink: #E4EAE7; --ink-soft: #A3B0AC; --line: #2E3B3F;
+  --r1: #5DBAC3; --r2: #E0A94F; --r3: #F2687C; --r4: #8EADE0; --on-color: #121A1D;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.75; -webkit-text-size-adjust: 100%; }
+img { max-width: 100%; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--r1); outline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+header.hero { padding: 3.5rem 0 1.5rem; }
+.hero h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(2.1rem, 7vw, 3.4rem); line-height: 1.15; letter-spacing: 0.01em; margin: 0 0 0.9rem; }
+.hero h1 span { display: block; }
+.hero h1 .sub { font-weight: 600; font-size: 0.5em; color: var(--ink-soft); margin-top: 0.4rem; letter-spacing: 0.04em; }
+.hero p.lead { margin: 0; max-width: 36em; }
+.route { margin: 1.1rem 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+.strip-wrap { margin: 1.75rem 0 0.5rem; }
+.strip { display: grid; grid-template-columns: repeat(var(--days, 15), minmax(0, 1fr)); /* 天数在 HTML 的 --days 里改 */ gap: 3px; }
+.strip a { display: flex; align-items: center; justify-content: center; height: 44px; text-decoration: none; font-family: var(--serif); font-weight: 600; font-size: 0.9rem; color: var(--on-color); border-radius: 2px; }
+.strip a.r1 { background: var(--r1); }
+.strip a.r2 { background: var(--r2); }
+.strip a.r3 { background: var(--r3); }
+.strip a.r4 { background: var(--r4); }
+.strip a.fly { box-shadow: inset 0 -5px 0 rgba(255,255,255,0.45); }
+.strip-legend { display: grid; grid-template-columns: var(--legend, 1fr); /* 每段宽度在 HTML 的 --legend 里改 */ gap: 3px; margin-top: 0.4rem; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.35; }
+.strip-legend span { border-top: 2px solid; padding-top: 0.3rem; }
+.strip-legend .r1 { border-color: var(--r1); }
+.strip-legend .r2 { border-color: var(--r2); }
+.strip-legend .r3 { border-color: var(--r3); }
+.strip-legend .r4 { border-color: var(--r4); }
+.strip-note { font-size: 0.82rem; color: var(--ink-soft); margin: 0.5rem 0 0; }
+
+section { padding: 2.25rem 0 0.5rem; }
+h2 { font-family: var(--serif); font-weight: 900; font-size: 1.55rem; line-height: 1.3; margin: 0 0 1rem; }
+h3 { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; line-height: 1.4; margin: 0; }
+
+.alerts { background: var(--surface); border-left: 5px solid var(--r3); padding: 1.25rem 1.25rem 0.5rem; margin-top: 2rem; }
+.alerts h2 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+.alerts .asof { color: var(--ink-soft); font-size: 0.88rem; margin: 0 0 0.75rem; }
+.alerts dl { margin: 0; }
+.alerts dt { font-weight: 700; margin-top: 0.6rem; }
+.alerts dd { margin: 0.1rem 0 0.8rem; }
+
+.island { padding-top: 3rem; }
+.island-head { border-top: 6px solid var(--c); padding-top: 1rem; margin-bottom: 0.5rem; }
+.island-head h2 { margin: 0; color: var(--c); font-size: clamp(1.7rem, 5vw, 2.2rem); }
+.island-head h2 .latin { font-family: var(--latin); font-style: italic; font-weight: 500; font-size: 0.62em; color: var(--ink-soft); margin-left: 0.4rem; }
+.island-head p { margin: 0.35rem 0 0; color: var(--ink-soft); }
+.island.r1 { --c: var(--r1); }
+.island.r2 { --c: var(--r2); }
+.island.r3 { --c: var(--r3); }
+.island.r4 { --c: var(--r4); }
+
+.day { display: grid; grid-template-columns: 3.4rem 1fr; gap: 0 1rem; padding: 1.5rem 0 0.75rem; border-bottom: 1px solid var(--line); scroll-margin-top: 1rem; }
+.day:last-child { border-bottom: 0; }
+.day .num { font-family: var(--serif); font-weight: 900; font-size: 2.4rem; line-height: 1; color: var(--c); text-align: right; padding-top: 0.1rem; }
+.day .num .date { display: block; margin-top: 0.4rem; font-family: var(--sans); font-weight: 600; font-size: 0.72rem; line-height: 1.35; letter-spacing: 0.02em; color: var(--ink-soft); }
+.toc .t .date { font-weight: 600; color: var(--c); margin-right: 0.6em; font-variant-numeric: tabular-nums; }
+.day .body { min-width: 0; }
+.move { margin: 0.35rem 0 0.5rem; color: var(--ink-soft); font-size: 0.93rem; }
+.stops { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+.stop { padding: 0.55rem 0 0.55rem 0.9rem; border-left: 2px solid var(--line); margin-bottom: 0.25rem; }
+.stop .zh { font-weight: 700; }
+.stop .en { display: block; font-family: var(--latin); font-style: italic; font-size: 1.02rem; color: var(--ink-soft); line-height: 1.35; }
+.stop p { margin: 0.2rem 0 0; }
+.stop p.shoot { color: var(--ink-soft); font-size: 0.93rem; }
+.stop p.shoot::before { content: "拍摄："; color: var(--c); font-weight: 700; }
+.stop p.wild { font-size: 0.93rem; }
+.stop p.wild::before { content: "动物："; color: var(--c); font-weight: 700; }
+.tag.animal { background: var(--c); color: var(--on-color); }
+.stop .stay { color: var(--ink-soft); font-size: 0.88rem; margin-left: 0.5rem; }
+.day-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.8rem; }
+.totals { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; }
+.total { font-size: 0.8rem; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 3px; padding: 0 0.45rem; line-height: 1.7; }
+.total .mode { font-weight: 700; color: var(--c); margin-right: 0.3rem; }
+.toc { padding-top: 2rem; }
+.toc h2 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+.toc ol { list-style: none; margin: 0.75rem 0 0; padding: 0; }
+.toc li { display: grid; grid-template-columns: 2.6rem 1fr; gap: 0 0.9rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+.toc li.r1 { --c: var(--r1); }
+.toc li.r2 { --c: var(--r2); }
+.toc li.r3 { --c: var(--r3); }
+.toc li.r4 { --c: var(--r4); }
+.toc .d { font-family: var(--serif); font-weight: 900; font-size: 1.3rem; line-height: 1.3; color: var(--c); text-align: right; text-decoration: none; }
+.toc .c { min-width: 0; }
+.toc .t { display: block; font-weight: 700; color: inherit; text-decoration: none; }
+.toc .s { display: block; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.65; }
+.toc .s b { font-weight: 600; color: var(--ink); }
+.toc .s i { font-family: var(--latin); font-style: italic; font-size: 1.02em; }
+.stop .en a, .toc .s a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
+@media (max-width: 520px) { .toc li { grid-template-columns: 1.9rem 1fr; gap: 0 0.6rem; } .toc .d { font-size: 1.05rem; } }
+.leg { padding: 0.15rem 0 0.15rem 0.9rem; margin: 0 0 0.25rem; border-left: 2px dashed var(--line); font-size: 0.86rem; color: var(--ink-soft); line-height: 1.55; }
+.leg .mode { font-weight: 700; color: var(--c); margin-right: 0.4rem; }
+.wild-table td:first-child { white-space: nowrap; }
+.wild-table { --c: var(--ink); }
+.tag { display: inline-block; font-size: 0.75rem; font-weight: 700; line-height: 1.4; padding: 0 0.4rem; margin-left: 0.4rem; border: 1.5px solid var(--c); color: var(--c); border-radius: 3px; vertical-align: 0.1em; white-space: nowrap; }
+.tip { margin: 0.6rem 0 0.4rem; font-size: 0.93rem; color: var(--ink-soft); }
+.tip strong { color: var(--ink); }
+.branch h4 { margin: 0.8rem 0 0.2rem; font-size: 0.98rem; }
+.branch p { margin: 0 0 0.3rem; }
+
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 0.93rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--line); }
+th { font-weight: 700; color: var(--ink-soft); font-size: 0.85rem; }
+td .en { display: block; font-family: var(--latin); font-style: italic; color: var(--ink-soft); }
+
+.plain p { margin: 0 0 0.9rem; }
+.plain h3 { margin: 1.4rem 0 0.35rem; }
+
+footer { padding: 2.5rem 0 3rem; color: var(--ink-soft); font-size: 0.85rem; border-top: 1px solid var(--line); margin-top: 2.5rem; }
+
+@media (max-width: 520px) {
+  header.hero { padding-top: 2.25rem; }
+  .strip a { height: 38px; font-size: 0.78rem; }
+  .day { grid-template-columns: 2.4rem 1fr; gap: 0 0.7rem; }
+  .day .num { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1><span>【目的地】N天</span><span class="sub">【一句话重点，如：自然风光和拍照为主】</span></h1>
+  <p class="lead">【概述：第几次去，MM月DD日从哪出发，DD日从哪回。每个地方住几晚，为什么这样分配，比如“A只住2晚，把时间留给B和C”。】</p>
+  <p class="route">【路线：从哪飞到A，落地先去哪，A住几晚；飞B，B住几晚；飞C……最后从哪回。】</p>
+
+  <div class="strip-wrap">
+    <!-- 日期条：每天一个格子。
+         --days 写总格数（含回程日）。
+         class 写这一天属于哪个地区（r1/r2/r3/r4），有飞行的再加 fly（底部出现白线）。 -->
+    <nav class="strip" style="--days: 6" aria-label="按天跳转">
+      <a class="r1 fly" href="#d1" aria-label="第1天，MM/DD 周X" title="第1天，MM/DD 周X">1</a>
+      <a class="r1" href="#d2" aria-label="第2天，MM/DD 周X" title="第2天，MM/DD 周X">2</a>
+      <a class="r2 fly" href="#d3" aria-label="第3天，MM/DD 周X" title="第3天，MM/DD 周X">3</a>
+      <a class="r2" href="#d4" aria-label="第4天，MM/DD 周X" title="第4天，MM/DD 周X">4</a>
+      <a class="r3 fly" href="#d5" aria-label="第5天，MM/DD 周X" title="第5天，MM/DD 周X">5</a>
+      <a class="r1 fly" href="#d6" aria-label="回程日，MM/DD 周X" title="回程日，MM/DD 周X">回</a>
+    </nav>
+    <!-- 图例：--legend 里每段写“该地区天数fr”，顺序和下面的 span 一致。
+         夏威夷版是 2fr 5fr 7fr 1fr（欧胡2天、茂宜5天、大岛7天、回程1天）。 -->
+    <div class="strip-legend" style="--legend: 2fr 2fr 1fr 1fr" aria-hidden="true">
+      <span class="r1">【地区一】</span>
+      <span class="r2">【地区二】</span>
+      <span class="r3">【地区三】</span>
+      <span class="r1">回程</span>
+    </div>
+    <p class="strip-note">点数字跳到当天。底部带白线的是有飞行的日子。景点旁边实心的“动物”标签表示那里能拍到野生动物，汇总见后面的“野生动物”。</p>
+    <p class="strip-note">每天标题旁边是当天开车和徒步的总时间：开车按正常路况估算；徒步只算实际走路的时间，不含浮潜和拍照停留。景点名称后面是建议停留时间，包含步行和拍摄。景点之间的虚线标了路程和时间，是按正常路况估算的，不含停留。【哪些路段经常比这慢】，出发前用导航核实。</p>
+  </div>
+</header>
+
+<!-- 目录：每天一行。class 写地区（r1/r2/r3/r4），站点用“<b>中文名</b> <i>英文名链接</i>”，之间用顿号隔开。 -->
+<section class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">目录</h2>
+  <p class="strip-note">点天数或标题跳到当天；点英文名在谷歌地图里打开这个地点。</p>
+  <ol>
+      <li class="r1"><a class="d" href="#d1">1</a><div class="c"><a class="t" href="#d1"><span class="date">MM/DD 周X</span>【当天主题】</a><span class="s"><b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i>、<b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i></span></div></li>
+      <li class="r1"><a class="d" href="#d2">2</a><div class="c"><a class="t" href="#d2"><span class="date">MM/DD 周X</span>【当天主题】</a><span class="s"><b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i>、<b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i></span></div></li>
+      <li class="r2"><a class="d" href="#d3">3</a><div class="c"><a class="t" href="#d3"><span class="date">MM/DD 周X</span>【当天主题】</a><span class="s"><b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i></span></div></li>
+      <li class="r2"><a class="d" href="#d4">4</a><div class="c"><a class="t" href="#d4"><span class="date">MM/DD 周X</span>【当天主题】</a><span class="s"><b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i>、<b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i></span></div></li>
+      <li class="r3"><a class="d" href="#d5">5</a><div class="c"><a class="t" href="#d5"><span class="date">MM/DD 周X</span>【当天主题】</a><span class="s"><b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i></span></div></li>
+      <li class="r1"><a class="d" href="#d6">回</a><div class="c"><a class="t" href="#d6"><span class="date">MM/DD 周X</span>【当天主题，如：上午XX，晚上回程】</a><span class="s"><b>【景点中文名】</b> <i><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></i></span></div></li>
+  </ol>
+</section>
+
+<aside class="alerts" aria-labelledby="alerts-title">
+  <h2 id="alerts-title">出发前先看近期情况</h2>
+  <p class="asof">信息截至【YYYY年M月D日】，出发前请再核实。</p>
+  <dl>
+    <dt>【会影响行程的事，如：为什么没排某地】</dt>
+    <dd>【一两句话：发生了什么、影响哪几天、行程怎么避开。】</dd>
+    <dt>【如：某段公路封闭】</dt>
+    <dd>【封到什么时候，改走哪条路。】</dd>
+    <dt>【如：季节和天气】</dt>
+    <dd>【雨季、台风季、旺季人多，对应的建议，比如买旅行保险、尽量订可免费取消的。】</dd>
+  </dl>
+</aside>
+
+<!-- ===================== 地区一 =====================
+     每个地区一个 section，class 写 island 加地区色（r1/r2/r3/r4）。
+     里面的每一天都会自动用这个地区的颜色。 -->
+<section class="island r1" aria-labelledby="r1">
+  <div class="island-head">
+    <h2 id="r1">【地区一中文名】<span class="latin">【当地名】</span></h2>
+    <p>第1到2天，住【哪里】（【已订 Airbnb/酒店】）。【哪里取车，第几天还车】。</p>
+  </div>
+
+  <!-- 一天 = 一个 article。复制整段 article 再改，就能加一天。 -->
+  <article class="day" id="d1">
+    <div class="num">1<span class="date">MM/DD<br>周X</span></div>
+    <div class="body">
+      <!-- 总量：只留当天有的项（开车/徒步/飞行/坐船） -->
+      <div class="day-head"><h3>【当天主题，如：抵达，看日落】</h3><div class="totals"><span class="total"><span class="mode">开车</span>约X小时X分钟</span><span class="total"><span class="mode">徒步</span>约X分钟</span><span class="total"><span class="mode">飞行</span>约X小时</span></div></div>
+      <p class="move">交通：【航班号，起飞地和时间，到达地和时间，直飞或转机，几人；或者“租车自驾”】</p>
+      <ul class="stops">
+        <!-- 路段：mode 写“开车”或“步行”，后面写出发时间、距离、分钟数 -->
+        <li class="leg"><span class="mode">开车</span>【取行李、取车约X小时】，再开约X公里，X分钟</li>
+        <!-- 景点：中文名、停留时间、标签、英文名（链接到地图），下面是说明 -->
+        <li class="stop">
+          <span class="zh">【景点中文名】</span><span class="stay">停留约X小时</span><span class="tag">已订票</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【一两句话：看什么、怎么走、要注意什么。订了的写清订了哪一场、几点到、几人。】</p>
+          <p class="shoot">【机位、最佳光线时间、用什么镜头】</p>
+          <p><strong>实际：</strong>【出发后实际有变化，事后补记；没有就删掉这一行】</p>
+        </li>
+        <li class="leg"><span class="mode">步行</span>约X米，X分钟</li>
+        <li class="stop">
+          <span class="zh">【景点中文名】</span><span class="stay">停留约X分钟</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【一两句话说明】</p>
+          <p class="wild">【可能见到什么动物，保持多远，能不能下水】</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约X公里，X分钟到【餐厅】吃晚饭，车停【哪里】</li>
+        <li class="stop">
+          <span class="zh">晚饭：【餐厅名和招牌】</span><span class="stay">停留约1小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant%20Name%20Address" target="_blank" rel="noopener">【Restaurant Name】</a></span>
+          <p>【当地特色是什么，推荐菜，人均多少，营业到几点，要不要预约】</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回【住处】，约X公里，X分钟</li>
+      </ul>
+      <!-- 提示：写在当天最后，常用的有 住宿、吃饭、后备、实际、门票、下午 -->
+      <p class="tip"><strong>住宿：</strong>【住处名称、地址、入住和退房时间、停车】</p>
+      <p class="tip"><strong>吃饭：</strong>【早饭和午饭在哪解决；第二天出发太早的话，前一晚去哪买早饭】</p>
+    </div>
+  </article>
+
+  <article class="day" id="d2">
+    <div class="num">2<span class="date">MM/DD<br>周X</span></div>
+    <div class="body">
+      <div class="day-head"><h3>【当天主题】</h3><div class="totals"><span class="total"><span class="mode">开车</span>约X小时</span><span class="total"><span class="mode">徒步</span>约X小时</span></div></div>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>【HH:MM】从【住处】出发，约X公里，X分钟</li>
+        <li class="stop">
+          <span class="zh">【景点中文名】</span><span class="stay">停留约X小时</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【一两句话说明】</p>
+          <p class="shoot">【拍摄建议】</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>约X公里，X分钟</li>
+        <li class="stop">
+          <span class="zh">【景点中文名】</span><span class="stay">停留约X分钟</span><span class="tag">可选</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【一两句话说明；时间紧可以跳过】</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回【住处】，约X公里，X分钟</li>
+      </ul>
+      <p class="tip"><strong>后备：</strong>【下雨、关闭或取消时换成什么】</p>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== 地区二 ===================== -->
+<section class="island r2" aria-labelledby="r2">
+  <div class="island-head">
+    <h2 id="r2">【地区二中文名】<span class="latin">【当地名】</span></h2>
+    <p>第3到4天，【住哪里，住几晚，是否已订】。【租车安排】。</p>
+  </div>
+
+  <article class="day" id="d3">
+    <div class="num">3<span class="date">MM/DD<br>周X</span></div>
+    <div class="body">
+      <div class="day-head"><h3>【当天主题，如：上午XX，飞往地区二】</h3><div class="totals"><span class="total"><span class="mode">开车</span>约X小时</span><span class="total"><span class="mode">飞行</span>约X分钟</span></div></div>
+      <p class="move">交通：【早上几点退房，几点还车；航班号，起降时间，几人】</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>【HH:MM】取完车，从【机场】出发，约X公里，X分钟</li>
+        <li class="stop">
+          <span class="zh">【景点中文名】</span><span class="stay">停留约X分钟</span><span class="tag">已订</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【一两句话说明；预约时段写清】</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>到【住处】入住（下午X点以后），约X公里，X分钟</li>
+      </ul>
+      <p class="tip"><strong>住宿：</strong>【住处名称、地址、入住时间】</p>
+    </div>
+  </article>
+
+  <article class="day" id="d4">
+    <div class="num">4<span class="date">MM/DD<br>周X</span></div>
+    <div class="body">
+      <div class="day-head"><h3>【当天主题，如：出海浮潜】</h3><div class="totals"><span class="total"><span class="mode">开车</span>约X分钟</span><span class="total"><span class="mode">坐船</span>约X小时</span></div></div>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>【HH:MM】从住处出发，约X公里，X分钟到【码头/集合点】</li>
+        <li class="stop">
+          <span class="zh">【景点或活动中文名】</span><span class="stay">坐船约X小时（HH:MM到HH:MM）</span><span class="tag">已订船</span><span class="tag animal">动物</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【坐哪家的什么船，几点报到、几点回，含不含餐，船上有什么。已订哪个项目，几人。】</p>
+          <p class="wild">【可能见到的动物和法规距离】</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>回住处，约X公里，X分钟</li>
+        <li class="stop">
+          <span class="zh">【下午的景点】</span><span class="stay">停留约X小时</span><span class="tag">从第N天挪来</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【一两句话说明；调整过的写清从哪天挪来、为什么】</p>
+        </li>
+      </ul>
+      <p class="tip"><strong>后备：</strong>【船因海况取消的话改去哪】</p>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== 地区三 ===================== -->
+<section class="island r3" aria-labelledby="r3">
+  <div class="island-head">
+    <h2 id="r3">【地区三中文名】<span class="latin">【当地名】</span></h2>
+    <p>第5天，【住哪里，住几晚，是否已订】。【哪里取车，哪里还车】。</p>
+  </div>
+
+  <article class="day" id="d5">
+    <div class="num">5<span class="date">MM/DD<br>周X</span></div>
+    <div class="body">
+      <div class="day-head"><h3>【当天主题】</h3><div class="totals"><span class="total"><span class="mode">开车</span>约X小时</span><span class="total"><span class="mode">徒步</span>约X公里</span><span class="total"><span class="mode">飞行</span>约X小时</span></div></div>
+      <p class="move">交通：【航班号，起降时间】</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>从【机场】出发，约X公里，X分钟</li>
+        <li class="stop">
+          <span class="zh">【景点中文名】</span><span class="stay">停留约X小时</span><span class="tag">已订团</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【一两句话说明】</p>
+          <p class="shoot">【拍摄建议】</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>到【住处】，约X公里，X分钟</li>
+      </ul>
+      <p class="tip"><strong>实际：</strong>【出发后实际有变化，事后补记】</p>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== 回程日 ===================== -->
+<section class="island r1" aria-labelledby="home">
+  <div class="island-head">
+    <h2 id="home">回程日<span class="latin">【当地名】</span></h2>
+    <p>MM月DD日。【住哪里，上午去哪，晚上几点、经哪里转机回家】。</p>
+  </div>
+
+  <article class="day" id="d6">
+    <div class="num">回<span class="date">MM/DD<br>周X</span></div>
+    <div class="body">
+      <div class="day-head"><h3>【当天主题】</h3><div class="totals"><span class="total"><span class="mode">开车</span>约X分钟</span><span class="total"><span class="mode">飞行</span>约X小时</span></div></div>
+      <p class="move">交通：【退房和还车时间；回程航班号，起降时间，转机地】</p>
+      <ul class="stops">
+        <li class="leg"><span class="mode">开车</span>【HH:MM】退房出发，约X公里，X分钟</li>
+        <li class="stop">
+          <span class="zh">【景点中文名】</span><span class="stay">停留约X分钟</span><span class="en"><a href="https://www.google.com/maps/search/?api=1&amp;query=English%20Name%20City" target="_blank" rel="noopener">【English Name】</a></span>
+          <p>【一两句话说明】</p>
+        </li>
+        <li class="leg"><span class="mode">开车</span>到【机场】还车，约X公里，X分钟</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<!-- ===================== 野生动物 ===================== -->
+<section class="plain" aria-labelledby="wild">
+  <h2 id="wild">野生动物</h2>
+  <p>【当地野生动物受什么法律保护，距离要求来自哪里；要不要带长焦镜头。】</p>
+  <div class="table-scroll">
+    <table class="wild-table">
+      <thead>
+        <tr><th>动物</th><th>在哪里</th><th>距离和注意</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>【动物中文名】<span class="en">【English name】</span></td>
+          <td><a href="#d1">第1天</a>【景点】，<a href="#d4">第4天</a>【景点】（【什么时间看运气】）</td>
+          <td>【至少多远，不触碰，其他注意】</td>
+        </tr>
+        <tr>
+          <td>【动物中文名】<span class="en">【English name】</span></td>
+          <td><a href="#d4">第4天</a>【景点】，早上</td>
+          <td>【法定距离】</td>
+        </tr>
+        <tr>
+          <td>【动物中文名】<span class="en">【English name】</span></td>
+          <td>碰运气，【哪里都可能遇到】</td>
+          <td>【注意事项】</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>这个季节看不到的</h3>
+  <p>【哪些动物要别的月份才来，比如“座头鲸12月到4月才来”。】</p>
+</section>
+
+<!-- ===================== 没排的 ===================== -->
+<section class="plain" aria-labelledby="skip">
+  <h2 id="skip">这次没排的知名风景</h2>
+  <p>这几处都很有名，但近期去不了或者不确定能不能去，出发前可以再查一下。</p>
+  <h3>【景点名】</h3>
+  <p>【English Name】。【为什么没排：太远、关闭、要长徒步、季节不对。】</p>
+  <h3>【景点名】</h3>
+  <p>【English Name】。【为什么没排】</p>
+</section>
+
+<!-- ===================== 要提前订的 ===================== -->
+<section aria-labelledby="book">
+  <h2 id="book">要提前订的</h2>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>项目</th><th>在哪订</th><th>什么时候订</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>【项目中文名】<span class="en">【English name】</span></td>
+          <td>【官网或平台，价格】</td>
+          <td>【提前多久、几点放票；订好后改成“已订MM/DD，几人”】</td>
+        </tr>
+        <tr>
+          <td>住宿<span class="en">Lodging</span></td>
+          <td>【Airbnb、酒店官网】</td>
+          <td>全部已订：【地点】MM/DD到MM/DD、【地点】MM/DD到MM/DD</td>
+        </tr>
+        <tr>
+          <td>【机票、租车】</td>
+          <td>【在哪订的】</td>
+          <td>【已订航班和座位；租车在哪取、哪还】</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== 专题 ===================== -->
+<section class="plain" aria-labelledby="topic">
+  <h2 id="topic">【专题：当地最特别、变数最大的事，如“火山怎么安排”】</h2>
+  <p>【为什么要单独说：变化快、提前几天才知道、要留机动时间。】</p>
+  <h3>出发前一周</h3>
+  <p>【看哪个官方网站，怎么判断。】</p>
+  <h3>到了当地</h3>
+  <p>【去哪看，几点去，看不到时怎么办。】</p>
+  <h3>安全</h3>
+  <p>【风险和注意事项。】</p>
+</section>
+
+<!-- ===================== 实用信息 ===================== -->
+<section class="plain" aria-labelledby="practical">
+  <h2 id="practical">拍摄和实用信息</h2>
+  <h3>月相</h3>
+  <p>【这几天是满月还是新月，对夜拍和星空的影响。】</p>
+  <h3>器材</h3>
+  <p>【三脚架、偏振镜、减光镜、头灯、防水包……为什么要带。】</p>
+  <h3>天气和衣服</h3>
+  <p>【这个月份哪边晴、哪边雨，山顶多冷，要带什么衣服。】</p>
+  <h3>住宿</h3>
+  <p>【每段住哪、住几晚，一句话总结。】</p>
+  <h3>停车防盗</h3>
+  <p>【当地停车场常见问题，行李怎么放。】</p>
+  <h3>时差</h3>
+  <p>【和家里差几小时，夏令时有没有变化。】</p>
+</section>
+
+<footer>
+  <p>【近期路况、景点开放等信息来自哪些官方网站和当地媒体】，截至【YYYY年M月D日】。【哪些情况变化快】，出发前请以官方网站为准。</p>
+</footer>
+
+</div>
+</body>
+</html>
